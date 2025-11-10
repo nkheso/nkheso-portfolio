@@ -254,17 +254,24 @@ section .container > p[style*="text-align: center"] {
        Hero Section
     ------------------------------ */
     .hero {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+      /* Keep section spacing; layout is handled by the inner .container */
       min-height: 100vh;
       padding: 80px 0;
       margin-bottom: 20px;
     }
 
+    /* Use the inner container to align image and text side-by-side */
+    .hero .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 32px;
+      flex-wrap: nowrap; /* keep them side-by-side on larger screens */
+    }
+
     .hero-text {
-      max-width: 600px;
-      order: 2;
+      flex: 1 1 auto;
+      max-width: calc(100% - 480px);
     }
 
     .hero-text h1 {
@@ -285,14 +292,13 @@ section .container > p[style*="text-align: center"] {
       margin-bottom: 30px;
     }
 
-    .hero-img { 
-      position: relative; 
-      width: 450px; 
+    .hero-img {
+      position: relative;
+      flex: 0 0 450px;
+      width: 450px;
       height: 450px;
-      margin-right: 60px;
-      margin-bottom: 20px;
-      margin-top: 20px;
-    } 
+      margin: 0;
+    }
 
     .hero-img img { 
       width: 100%; 
@@ -468,7 +474,7 @@ section .container > p[style*="text-align: center"] {
     }
 
     .skill-category {
-      background: white;
+      background: rgb(249, 248, 250);
       border-radius: 12px;
       padding: 30px;
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
@@ -1260,7 +1266,7 @@ section .container > p[style*="text-align: center"] {
 
   <!-- Hero Section -->
   <section id="home" class="hero">
-    <div class="container" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
+    <div class="container">
       <div class="hero-img">
         <img src="assets/Media (2).jfif" alt="Nkheso">
       </div>
