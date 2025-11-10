@@ -611,8 +611,9 @@ section .container > p[style*="text-align: center"] {
 
     .project-links {
       margin-top: 15px;
-      display: flex;
+      display: none;
       gap: 10px;
+      transition: all 0.3s ease;
     }
 
     .project-link {
@@ -1419,8 +1420,8 @@ I thrive in collaborative environments, continuously learning, and adapting to n
               <p class="project-description">
                 Äuthor is a portfolio website for author Chimamanda to showcase her work and connect with readers.
               </p>
-              <button class="view-project-btn">View Project</button>
-              <div class="project-links" style="display: none;">
+              <button class="view-project-btn" onclick="toggleProjectLinks(this)">View Project</button>
+              <div class="project-links">
                 <a href="https://fabulous-bavarois-9868bb.netlify.app/" target="_blank" class="project-link">Live Demo</a>
                 <a href="https://github.com/nkheso/Author2.git" target="_blank" class="project-link">GitHub Repo</a>
               </div>
@@ -1881,14 +1882,6 @@ I thrive in collaborative environments, continuously learning, and adapting to n
   </footer>
 
   <script>
-     // Add the navigation update for the new Journey section
-    document.addEventListener('DOMContentLoaded', function() {
-      // Update navigation to include Journey
-      const navLinks = document.querySelectorAll('.nav-link');
-      const hamburger = document.querySelector('.hamburger');
-      const navLinksContainer = document.querySelector('.nav-links');
-
-      
     // Navigation and Mobile Menu functionality
     document.addEventListener('DOMContentLoaded', function() {
       const navLinks = document.querySelectorAll('.nav-link');
@@ -1948,7 +1941,7 @@ I thrive in collaborative environments, continuously learning, and adapting to n
       });
     });
 
-    // Project Slider
+      // Project Slider
     document.addEventListener('DOMContentLoaded', function() {
       const slider = document.querySelector('.cards-slider');
       const prevBtn = document.querySelector('.prev-arrow');
@@ -1979,85 +1972,64 @@ I thrive in collaborative environments, continuously learning, and adapting to n
           left: scrollAmount,
           behavior: 'smooth'
         });
-      });
-
-      // View Project buttons
-      document.querySelectorAll('.view-project-btn').forEach(btn => {
-        btn.addEventListener('click', () => {
-          const links = btn.nextElementSibling;
-          if (links.style.display === 'none') {
-            links.style.display = 'flex';
-            btn.textContent = 'Hide Options';
-          } else {
-            links.style.display = 'none';
+      });      // Project Links Toggle Function
+      function toggleProjectLinks(button) {
+        const links = button.nextElementSibling;
+        if (links.style.display === 'none' || !links.style.display) {
+          // Hide all other project links first
+          document.querySelectorAll('.project-links').forEach(div => {
+            div.style.display = 'none';
+          });
+          document.querySelectorAll('.view-project-btn').forEach(btn => {
             btn.textContent = 'View Project';
-          }
-        });
-      });
-    });
-
-    // Certificate Modal
-    document.addEventListener('DOMContentLoaded', function() {
-      const certificateItems = document.querySelectorAll('.certificate-item');
-      const modal = document.querySelector('.certificate-modal');
-      const modalImg = modal.querySelector('img');
-      const closeModal = document.querySelector('.close-modal');
-
-      certificateItems.forEach(item => {
-        item.addEventListener('click', () => {
-          const certificateSrc = item.getAttribute('data-certificate');
-          modalImg.src = certificateSrc;
-          modal.classList.add('active');
-        });
-      });
-
-      closeModal.addEventListener('click', () => {
-        modal.classList.remove('active');
-      });
-
-      modal.addEventListener('click', (e) => {
-        if (e.target === modal) {
-          modal.classList.remove('active');
+          });
+          // Show this project's links
+          links.style.display = 'flex';
+          button.textContent = 'Hide Options';
+        } else {
+          links.style.display = 'none';
+          button.textContent = 'View Project';
         }
-      });
+      }
     });
 
-    // Form submission handler
-    document.addEventListener('DOMContentLoaded', function() {
-      const form = document.getElementById('contact-form');
-      const status = document.getElementById('form-status');
+   
+  // Form submission handler
+  document.addEventListener('DOMContentLoaded', function() {
+    const form = document.getElementById('contact-form');
+    const status = document.getElementById('form-status');
+    
+    form.addEventListener("submit", function(e) {
+      e.preventDefault();
+      const formData = new FormData(form);
       
-      form.addEventListener("submit", function(e) {
-        e.preventDefault();
-        const formData = new FormData(form);
-        
-        fetch(form.action, {
-          method: form.method,
-          body: formData,
-          headers: {
-              'Accept': 'application/json'
-          }
-        }).then(response => {
-          if (response.ok) {
-            status.textContent = "Message successfully sent! We will get in touch soon.";
-            status.className = "show success";
-            form.reset();
-          } else {
-            response.json().then(data => {
-              if (data.errors) {
-                status.textContent = data.errors.map(error => error.message).join(", ");
-              } else {
-                status.textContent = "Oops! There was a problem submitting your form";
-              }
-              status.className = "show error";
-            });
-          }
-        }).catch(error => {
-          status.textContent = "Oops! There was a problem submitting your form";
-          status.className = "show error";
-        });
+      fetch(form.action, {
+        method: form.method,
+        body: formData,
+        headers: {
+            'Accept': 'application/json'
+        }
+      }).then(response => {
+        if (response.ok) {
+          status.textContent = "Message successfully sent! We will get in touch soon.";
+          status.className = "show success";
+          form.reset();
+        } else {
+          response.json().then(data => {
+            if (data.errors) {
+              status.textContent = data.errors.map(error => error.message).join(", ");
+            } else {
+              status.textContent = "Oops! There was a problem submitting your form";
+            }
+            status.className = "show error";
+          });
+        }
+      }).catch(error => {
+        status.textContent = "Oops! There was a problem submitting your form";
+        status.className = "show error";
       });
     });
+  });
   </script>
 </body>
 </html>
