@@ -24,10 +24,88 @@
       padding: 0;
       box-sizing: border-box;
     }
-/* ------------------------------
+    
+    html {
+      scroll-behavior: smooth;
+    }
+    
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f5f7fa;
+      color: #333;
+      line-height: 1.6;
+      border: 12px solid white;
+      min-height: 100vh;
+      box-sizing: border-box;
+      background-image: linear-gradient(135deg, rgba(139, 92, 246, 0.05) 0%, rgba(59, 130, 246, 0.05) 100%);
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+      transition: all 0.3s ease;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 40px;
+      position: relative;
+    }
+
+    section {
+      padding: 50px 0;
+      margin: 20px 0;
+      background: linear-gradient(135deg, #f8f9ff 0%, #f0f2ff 100%);
+      border-radius: 20px;
+      box-shadow: 0 15px 50px rgba(0, 0, 0, 0.1);
+      border: 2px solid rgba(139, 92, 246, 0.1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 5px;
+      background: linear-gradient(to right, var(--primary), var(--secondary));
+    }
+
+    h1, h2, h3, h4 {
+      margin-bottom: 15px;
+      color: var(--dark);
+    }
+
+    h2 {
+      font-size: 2.5rem;
+      position: relative;
+      display: inline-block;
+    }
+
+    h2::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      width: 60px;
+      height: 4px;
+      background: linear-gradient(to right, var(--primary), var(--secondary));
+      border-radius: 2px;
+    }
+
+    p {
+      margin-bottom: 15px;
+      color: var(--gray);
+    }
+
+    /* ------------------------------
        Navigation Bar
     ------------------------------ */
-    header {
+     header {
       position: fixed;
       top: 0;
       left: 0;
@@ -113,56 +191,6 @@
       color: var(--dark);
       font-size: 24px;
     }
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: var(--light);
-      color: #333;
-      line-height: 1.6;
-    }
-
-    a {
-      text-decoration: none;
-      color: inherit;
-      transition: all 0.3s ease;
-    }
-
-    .container {
-      width: 90%;
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 20px;
-    }
-
-    section {
-      padding: 80px 0;
-    }
-
-    h1, h2, h3, h4 {
-      margin-bottom: 15px;
-      color: var(--dark);
-    }
-
-    h2 {
-      font-size: 2.5rem;
-      position: relative;
-      display: inline-block;
-    }
-
-    h2::after {
-      content: '';
-      position: absolute;
-      bottom: -10px;
-      left: 0;
-      width: 60px;
-      height: 4px;
-      background: linear-gradient(to right, var(--primary), var(--secondary));
-      border-radius: 2px;
-    }
-
-    p {
-      margin-bottom: 15px;
-      color: var(--gray);
-    }
 
     /* ------------------------------
        Buttons
@@ -195,7 +223,33 @@
       background: var(--primary);
       color: white;
     }
+/* Target existing centered headers */
+section .container > h2[style*="text-align: center"] {
+  text-align: center !important;
+  margin-bottom: 15px !important;
+  position: relative;
+  display: inline-block;
+  left: 50%;
+  transform: translateX(-50%);
+}
 
+section .container > h2[style*="text-align: center"]::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 4px;
+  background: linear-gradient(to right, var(--primary), var(--secondary));
+  border-radius: 2px;
+}
+
+section .container > p[style*="text-align: center"] {
+  max-width: 600px;
+  margin: 30px auto 40px !important;
+  font-size: 1.1rem;
+}
     /* ------------------------------
        Hero Section
     ------------------------------ */
@@ -229,24 +283,31 @@
       font-size: 1.2rem;
       margin-bottom: 30px;
     }
-.hero-img { 
-    position: relative; 
-    width: 450px; 
-    height: 450px;
-    margin-right: 60px;
-    margin-bottom: 20px;
-    margin-top: 20px;
- } 
-.hero-img img { 
-    width: 100%; 
-    height: 100%; 
-    object-fit: cover; 
-    border-radius: 50%; 
-    border: 4px solid var(--primary); 
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1); 
-    animation: float 6s ease-in-out infinite;
-}
-    
+
+    .hero-img { 
+      position: relative; 
+      width: 450px; 
+      height: 450px;
+      margin-right: 60px;
+      margin-bottom: 20px;
+      margin-top: 20px;
+    } 
+
+    .hero-img img { 
+      width: 100%; 
+      height: 100%; 
+      object-fit: cover; 
+      border-radius: 50%; 
+      border: 4px solid var(--primary); 
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1); 
+      animation: float 6s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-20px); }
+      100% { transform: translateY(0px); }
+    }
 
     .socials {
       margin: 20px 0;
@@ -304,37 +365,154 @@
     }
 
     /* ------------------------------
-       Projects Section
+       Why Work With Me Section
     ------------------------------ */
-    .projects-gallery {
+    .why-work-with-me {
+      background: white;
+      border-radius: 16px;
+      padding: 60px;
+      margin: 40px 0;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+    }
+
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 30px;
+      margin-top: 40px;
+    }
+
+    .benefit-card {
+      background: lavender;
+      border-radius: 12px;
+      padding: 30px;
+      text-align: center;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      transition: all 0.3s ease;
+    }
+
+    .benefit-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    .benefit-icon {
+      font-size: 3rem;
+      color: var(--primary);
+      margin-bottom: 20px;
+    }
+
+    .benefit-card h3 {
+      font-size: 1.5rem;
+      margin-bottom: 15px;
+    }
+
+    /* ------------------------------
+       Education Section
+    ------------------------------ */
+    .education-timeline {
+      position: relative;
+      max-width: 800px;
+      margin: 40px auto 0;
+    }
+
+    .education-timeline::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 20px;
+      width: 4px;
+      background: linear-gradient(to bottom, var(--primary), var(--secondary));
+    }
+
+    .education-item {
+      position: relative;
+      margin-bottom: 40px;
+      padding-left: 60px;
+    }
+
+    .education-item::before {
+      content: '';
+      position: absolute;
+      left: 12px;
+      top: 5px;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: var(--primary);
+      border: 4px solid white;
+      box-shadow: 0 0 0 3px var(--primary);
+    }
+
+    .education-item h3 {
+      color: var(--primary);
+      margin-bottom: 10px;
+    }
+
+    .education-item em {
+      color: var(--gray);
+      display: block;
+      margin-bottom: 15px;
+    }
+
+    /* ------------------------------
+       Skills Section - Updated Layout
+    ------------------------------ */
+    .skills-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 30px;
       margin-top: 40px;
     }
 
-    .projects-gallery a {
-      display: block;
+    .skill-category {
+      background: white;
       border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      padding: 30px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
       transition: all 0.3s ease;
     }
 
-    .projects-gallery a:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+    .skill-category:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
     }
 
-    .projects-gallery img {
-      width: 100%;
-      height: 200px;
-      object-fit: cover;
-      transition: transform 0.5s ease;
+    .skill-category h3 {
+      font-size: 1.5rem;
+      color: var(--primary);
+      margin-bottom: 20px;
+      border-bottom: 2px solid var(--primary);
+      padding-bottom: 10px;
     }
 
-    .projects-gallery a:hover img {
-      transform: scale(1.1);
+    .skill-list {
+      list-style: none;
+    }
+
+    .skill-item {
+      margin-bottom: 15px;
+      padding-bottom: 15px;
+      border-bottom: 1px solid var(--gray-light);
+    }
+
+    .skill-item:last-child {
+      margin-bottom: 0;
+      padding-bottom: 0;
+      border-bottom: none;
+    }
+
+    .skill-name {
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: var(--dark);
+      margin-bottom: 5px;
+    }
+
+    .skill-description {
+      color: var(--gray);
+      font-size: 0.95rem;
     }
 
     /* ------------------------------
@@ -476,38 +654,6 @@
       background: linear-gradient(to top, rgba(0,0,0,0.5), transparent 60%);
     }
 
-    .floating-buttons {
-      position: absolute;
-      top: 15px;
-      right: 15px;
-      display: flex;
-      gap: 10px;
-      opacity: 0;
-      transition: opacity 0.3s ease;
-    }
-
-    .card:hover .floating-buttons {
-      opacity: 1;
-    }
-
-    .floating-button {
-      background: rgba(255, 255, 255, 0.9);
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      color: #333;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-      transition: background-color 0.3s ease;
-    }
-
-    .floating-button:hover {
-      background: white;
-      transform: scale(1.1);
-    }
-
     .project-icon {
       position: absolute;
       bottom: 15px;
@@ -546,20 +692,6 @@
       margin-bottom: 15px;
     }
 
-    .platform-badge-container {
-      padding: 0 20px 20px;
-    }
-
-    .platform-badge {
-      display: inline-block;
-      background: linear-gradient(90deg, var(--primary), var(--secondary));
-      color: white;
-      padding: 6px 15px;
-      border-radius: 20px;
-      font-weight: 600;
-      font-size: 0.9rem;
-    }
-
     /* ------------------------------
        Experience Section
     ------------------------------ */
@@ -582,105 +714,159 @@
       margin-bottom: 15px;
     }
 
-     /* ------------------------------
-     Skills Section
+    .experience-points {
+      list-style-type: none;
+      padding-left: 20px;
+    }
+
+    .experience-points li {
+      position: relative;
+      margin-bottom: 10px;
+      padding-left: 25px;
+    }
+
+    .experience-points li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: var(--primary);
+      font-size: 1.5rem;
+      line-height: 1;
+    }
+
+    /* ------------------------------
+       Certifications Section - Updated Layout
     ------------------------------ */
-    .skills-container {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-      gap: 25px;
+    .certifications-container {
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
       margin-top: 40px;
     }
 
-    .skill-card {
-      background: white;
-      border-radius: 12px;
-      padding: 25px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-      transition: all 0.3s ease;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
+    .certification-category {
+      margin-bottom: 30px;
     }
 
-    .skill-card::before {
-      content: '';
+    .certification-category h3 {
+      font-size: 1.8rem;
+      margin-bottom: 20px;
+      color: var(--primary);
+      border-bottom: 2px solid var(--primary);
+      padding-bottom: 10px;
+      display: inline-block;
+    }
+
+    .certifications-gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 25px;
+    }
+
+    .certificate-item {
+      position: relative;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+      cursor: pointer;
+      height: 200px;
+    }
+
+    .certificate-item:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+    }
+
+    .certificate-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .certificate-item:hover img {
+      transform: scale(1.05);
+    }
+
+    .certificate-overlay {
       position: absolute;
       top: 0;
       left: 0;
-      width: 5px;
-      height: 100%;
-      background: linear-gradient(to bottom, var(--primary), var(--secondary));
-      transition: width 0.3s ease;
-    }
-
-    .skill-card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
-    }
-
-    .skill-card:hover::before {
       width: 100%;
-      opacity: 0.1;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      transition: opacity 0.3s ease;
     }
 
-    .skill-icon {
-      font-size: 2.5rem;
-      color: var(--primary);
-      margin-bottom: 15px;
+    .certificate-item:hover .certificate-overlay {
+      opacity: 1;
+    }
+
+    .view-certificate-btn {
+      background: var(--primary);
+      color: white;
+      padding: 10px 20px;
+      border-radius: 30px;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
       transition: all 0.3s ease;
     }
 
-    .skill-card:hover .skill-icon {
-      transform: scale(1.2);
-      color: var(--secondary);
+    .view-certificate-btn:hover {
+      background: var(--primary-dark);
+      transform: scale(1.05);
     }
 
-    .skill-name {
-      font-size: 1.2rem;
-      font-weight: 700;
-      margin-bottom: 10px;
-      color: var(--dark);
-    }
-
-    .skill-level {
-      height: 6px;
-      background: var(--gray-light);
-      border-radius: 3px;
-      overflow: hidden;
-      margin: 15px 0;
-    }
-
-    .skill-progress {
+    /* Certificate Modal */
+    .certificate-modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
       height: 100%;
-      background: linear-gradient(to right, var(--primary), var(--secondary));
-      border-radius: 3px;
+      background: rgba(0, 0, 0, 0.9);
+      z-index: 2000;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .certificate-modal.active {
+      display: flex;
+    }
+
+    .modal-content {
+      max-width: 90%;
+      max-height: 90%;
       position: relative;
-      width: 0;
-      transition: width 1s ease-in-out;
     }
 
-
-    /* ------------------------------
-       Certifications Section
-    ------------------------------ */
-    .certifications-gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 30px;
-      margin-top: 40px;
-    }
-
-    .certifications-gallery img {
+    .modal-content img {
       width: 100%;
-      border-radius: 12px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-      transition: all 0.3s ease;
+      height: auto;
+      border-radius: 8px;
     }
 
-    .certifications-gallery img:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+    .close-modal {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      color: white;
+      font-size: 2rem;
+      cursor: pointer;
+      background: rgba(0, 0, 0, 0.5);
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
 
     /* ------------------------------
@@ -857,34 +1043,36 @@
       transform: translateY(-3px);
       box-shadow: 0 10px 20px rgba(139, 92, 246, 0.3);
     }
-#form-status {
-  margin-top: 20px;
-  padding: 15px;
-  border-radius: 8px;
-  font-size: 16px;
-  font-weight: 600;
-  text-align: center;
-  transition: all 0.3s ease;
-  opacity: 0;
-  transform: translateY(-10px);
-}
 
-#form-status.show {
-  opacity: 1;
-  transform: translateY(0);
-}
+    #form-status {
+      margin-top: 20px;
+      padding: 15px;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: 600;
+      text-align: center;
+      transition: all 0.3s ease;
+      opacity: 0;
+      transform: translateY(-10px);
+    }
 
-#form-status.success {
-  background: #e6ffe6;
-  color: #008000;
-  border: 1px solid #b3ffb3;
-}
+    #form-status.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
 
-#form-status.error {
-  background: #ffe6e6;
-  color: #ff0000;
-  border: 1px solid #ffb3b3;
-}
+    #form-status.success {
+      background: #e6ffe6;
+      color: #008000;
+      border: 1px solid #b3ffb3;
+    }
+
+    #form-status.error {
+      background: #ffe6e6;
+      color: #ff0000;
+      border: 1px solid #ffb3b3;
+    }
+
     /* ------------------------------
        Footer
     ------------------------------ */
@@ -918,6 +1106,41 @@
         width: 400px;
         height: 400px;
         margin: 20px auto;
+      }
+    }
+
+    @media (max-width: 768px) {
+      section {
+        padding: 40px 0;
+      }
+      .container {
+        padding: 20px;
+      }
+      
+      .hero-text h1 {
+        font-size: 2.8rem;
+      }
+      
+      .hero-text h2 {
+        font-size: 1.8rem;
+      }
+      
+      .hero-img img {
+        width: 280px;
+        height: 280px;
+      }
+      
+      .form-row {
+        flex-direction: column;
+        gap: 20px;
+      }
+      
+      .contact-section {
+        padding: 40px 20px;
+      }
+
+      .certifications-gallery {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
       }
     }
 
@@ -986,117 +1209,27 @@
       .card {
         flex: 0 0 280px;
       }
-    }
 
-    @media (max-width: 768px) {
-      section {
-        padding: 60px 0;
-      }
-      
-      .hero-text h1 {
-        font-size: 2.8rem;
-      }
-      
-      .hero-text h2 {
-        font-size: 1.8rem;
-      }
-      
-      .hero-img img {
-        width: 280px;
-        height: 280px;
-      }
-      
-      .form-row {
-        flex-direction: column;
-        gap: 20px;
-      }
-      
-      .contact-section {
+      .why-work-with-me {
         padding: 40px 20px;
       }
 
-      .skill-card {
-        padding: 20px;
-      }
-
-      .project-links {
-        flex-direction: column;
-      }
-
-      .project-link {
-        width: 100%;
-      }
-    }
-
-    @media (max-width: 576px) {
-      .hero-text h1 {
-        font-size: 2.2rem;
-      }
-      
-      .hero-text h2 {
-        font-size: 1.5rem;
-      }
-      
-      .btn {
-        display: block;
-        margin: 0 auto 15px;
-        text-align: center;
-      }
-      
-      .hero-img img {
-        width: 220px;
-        height: 220px;
-      }
-
-      .card {
-        flex: 0 0 260px;
-      }
-
-      .section-header h2 {
-        font-size: 2.2rem;
+      .benefits-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
       }
 
       .certifications-gallery {
         grid-template-columns: 1fr;
       }
-    }/* Welcome Animation */
-#welcome-animation {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100vh;
-  background: var(--dark);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 9999;
-  flex-direction: column;
-}
 
-.welcome-text {
-  font-size: 3.5rem;
-  font-weight: 800;
-  color: white;
-  text-align: center;
-  opacity: 0;
-  transform: translateY(30px);
-}
-
-.welcome-subtext {
-  font-size: 1.5rem;
-  color: var(--primary);
-  margin-top: 20px;
-  opacity: 0;
-}
+      .skills-grid {
+        grid-template-columns: 1fr;
+      }
+    }
   </style>
 </head>
 <body>
-<!-- Welcome Animation -->
-  <div id="welcome-animation">
-    <div class="welcome-text">Welcome to Nkheso's Portfolio</div>
-    <div class="welcome-subtext">Junior Developer & Digital Associate</div>
-  </div>
   <!-- Navigation Bar -->
   <header>
     <div class="container">
@@ -1108,8 +1241,9 @@
         <ul class="nav-links">
           <li><a href="#home" class="nav-link active">Home</a></li>
           <li><a href="#about" class="nav-link">About</a></li>
+          <li><a href="#education" class="nav-link">Education</a></li>
           <li><a href="#skills" class="nav-link">Skills</a></li>
-          <li><a href="#projects" class="nav-link">My Projects</a></li>
+          <li><a href="#projects" class="nav-link">Projects</a></li>
           <li><a href="#certifications" class="nav-link">Certifications</a></li>
           <li><a href="#experience" class="nav-link">Experience</a></li>
           <li><a href="#contact" class="nav-link">Contact</a></li>
@@ -1131,8 +1265,8 @@
 
       <div class="hero-text">
         <h1>Hello, I'm <span style="color: var(--primary);">Nkheso</span></h1>
-        <h2>Junior Developer & Digital Associate</h2>
-        <p>A passionate developer and digital associate with experience in web, and AI-powered applications. I create clean, engaging, and functional digital experiences, constantly exploring innovative solutions and learning new technologies to deliver impactful results.</p>
+        <h2>UI/UX Designer & Digital Associate</h2>
+        <p>A passionate designer and developer with expertise in creating intuitive, user-centered digital experiences. I specialize in UI/UX design, web development, and AI-powered applications, blending creativity with technical skills to deliver impactful solutions.</p>
         
         <!-- Social Links -->
         <div class="socials">
@@ -1150,7 +1284,7 @@
         <!-- Buttons -->
         <div class="btns">
           <a href="#contact" class="btn">Get In Touch</a>
-          <a href="assets/khensoM.pdf" class="btn" download="Nkheso_Resume.pdf">Download Resume</a>
+          <a href="assets/Khenso Candidate CV V2 (2).pdf" class="btn" download="Khenso_Candidate_CV.pdf">Download Resume</a>
         </div>
       </div>
     </div>
@@ -1164,19 +1298,102 @@
         <div class="about-text">
           <h2>About Me</h2>
           <p>
-            I’m a motivated Junior Developer & Digital Associate with a strong foundation in web development, AI integration, and digital solutions. My experience spans building responsive websites, creating user-friendly interfaces, and applying AI tools to solve real-world challenges. I enjoy blending creativity with problem-solving—whether it’s designing a clean digital experience, optimizing workflows, or experimenting with emerging technologies.
+            I'm a motivated UI/UX Designer & Digital Associate with a strong foundation in user-centered design, web development, and digital solutions. My experience spans creating responsive websites, designing intuitive user interfaces, and applying AI tools to solve real-world challenges. I enjoy blending creativity with problem-solving—whether it's designing a clean digital experience, optimizing workflows, or experimenting with emerging technologies.
 
-I thrive in collaborative environments, continuously learning, and adapting to new trends in tech. My goal is to contribute to impactful projects where I can grow as a developer while delivering value through innovative and practical digital solutions.<br><br>
+I thrive in collaborative environments, continuously learning, and adapting to new trends in tech. My goal is to contribute to impactful projects where I can grow as a designer while delivering value through innovative and practical digital solutions.<br><br>
             Woodstock, Cape Town<br>
             Available for new opportunities
           </p>
-          
-          <a href="assets/khensoM.pdf" class="btn" download="Nkheso_Resume.pdf">Hire Me</a>
+
+          <a href="assets/Khenso Candidate CV V2 (2).pdf" class="btn" download="Khenso_Candidate_CV.pdf">Hire Me</a>
         </div>
       </div>
     </div>
   </section>
 
+  <!-- Education Section -->
+  <section id="education">
+    <div class="container">
+      <h2 style="text-align: center; margin-bottom: 20px;">Education</h2>
+      <p style="text-align: center; max-width: 700px; margin: 0 auto 40px;">My academic journey and qualifications.</p>
+      
+      <div class="education-timeline">
+        <div class="education-item">
+          <h3>Diploma in ICT Applications Development</h3>
+          <em>Feb 2023 - Dec 2025</em>
+          <p>Currently pursuing a comprehensive diploma focused on software development, web technologies, and application design principles.</p>
+        </div>
+        
+        <div class="education-item">
+          <h3>Matric Certificate</h3>
+          <em>Completed 2022</em>
+          <p>Successfully completed secondary education with a focus on mathematics, physical sciences, and computer applications technology.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<!-- Skills Section -->
+<section id="skills">
+  <div class="container">
+    <h2 style="text-align: center; margin-bottom: 20px;">My Skills</h2>
+    <p style="text-align: center; max-width: 700px; margin: 0 auto 40px;">
+      A brief overview of my technical and soft skills.
+    </p>
+
+    <div class="skills-grid">
+      <!-- Soft Skills -->
+      <div class="skill-category">
+        <h3>Soft Skills</h3>
+        <ul class="skill-list">
+          <li class="skill-item">
+            <div class="skill-name">Problem Solving</div>
+          </li>
+          <li class="skill-item">
+            <div class="skill-name">Critical Thinking</div>
+          </li>
+          <li class="skill-item">
+            <div class="skill-name">Communication</div>
+          </li>
+          <li class="skill-item">
+            <div class="skill-name">Team Collaboration</div>
+          </li>
+          <li class="skill-item">
+            <div class="skill-name">Time Management</div>
+          </li>
+          <li class="skill-item">
+            <div class="skill-name">Adaptability</div>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Technical Skills -->
+      <div class="skill-category">
+        <h3>Technical Skills</h3>
+        <ul class="skill-list">
+          <li class="skill-item">
+            <div class="skill-name">HTML/CSS</div>
+          </li>
+          <li class="skill-item">
+            <div class="skill-name">JavaScript</div>
+          </li>
+          <li class="skill-item">
+            <div class="skill-name">Java</div>
+          </li>
+          <li class="skill-item">
+            <div class="skill-name">Python</div>
+          </li>
+           <li class="skill-item">
+            <div class="skill-name">Figma</div>
+            <li class="skill-item">
+            <div class="skill-name">Python</div>
+          </li>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
 
 
   <!-- My Projects -->
@@ -1228,7 +1445,7 @@ I thrive in collaborative environments, continuously learning, and adapting to n
             </div>
           </div>
 
-<div class="card">
+          <div class="card">
             <div class="card-image">
               <img src="assets/content.png" alt="Content Generator" />
               <div class="gradient-overlay"></div>
@@ -1246,8 +1463,24 @@ I thrive in collaborative environments, continuously learning, and adapting to n
               </div>
             </div>
           </div>
-
-
+<div class="card">
+            <div class="card-image">
+              <img src="assets/study.jpeg" alt="MyStudyTask Master" />
+              <div class="gradient-overlay"></div>
+              <div class="project-icon" aria-label="Project Icon">R</div>
+            </div>
+            <div class="card-content">
+              <h3 class="project-title">MyStudyTask Master</h3>
+              <p class="project-description">
+                A website that helps students manage their study tasks effectively.
+              </p>
+              <button class="view-project-btn">View Project</button>
+              <div class="project-links" style="display: none;">
+                <a href="https://nkheso.github.io/MyStudyTaskMaster/" target="_blank" class="project-link">Live Demo</a>
+                <a href="https://github.com/nkheso/MyStudyTaskMaster" target="_blank" class="project-link">GitHub Repo</a>
+              </div>
+            </div>
+          </div>
           <div class="card">
             <div class="card-image">
               <img src="assets/chatbot.png" alt="AI Chatbot" />
@@ -1266,7 +1499,6 @@ I thrive in collaborative environments, continuously learning, and adapting to n
               </div>
             </div>
           </div>
-
 
           <div class="card">
             <div class="card-image">
@@ -1287,6 +1519,28 @@ I thrive in collaborative environments, continuously learning, and adapting to n
             </div>
           </div>
 
+
+
+
+ <div class="card">
+            <div class="card-image">
+              <img src="assets/HIV Awareness.jpeg" alt="Resume Generator" />
+              <div class="gradient-overlay"></div>
+              <div class="project-icon" aria-label="Project Icon">R</div>
+            </div>
+            <div class="card-content">
+              <h3 class="project-title">HIV Awareness</h3>
+              <p class="project-description">
+                A website that raises awareness about HIV.
+              </p>
+              <button class="view-project-btn">View Project</button>
+              <div class="project-links" style="display: none;">
+                <a href="https://hivawareness.netlify.app/" target="_blank" class="project-link">Live Demo</a>
+                <a href="https://github.com/nkheso/Awareness-Website" target="_blank" class="project-link">GitHub Repo</a>
+              </div>
+            </div>
+          </div>
+
           <div class="card">
             <div class="card-image">
               <img src="assets/prototype.png" alt="Soil Analyzer" />
@@ -1297,13 +1551,51 @@ I thrive in collaborative environments, continuously learning, and adapting to n
               <h3 class="project-title">Soil Analyzer Prototype</h3>
               <p class="project-description">
                 Interactive prototype for a soil analysis application.analyzes soil through images and user inputs to determine its composition.
-It then provides real-time crop recommendations tailored to the soil type.
-This helps farmers improve yields, save resources, and make sustainable farming decisions.
+                It then provides real-time crop recommendations tailored to the soil type.
+                This helps farmers improve yields, save resources, and make sustainable farming decisions.
               </p>
               <button class="view-project-btn">View Project</button>
               <div class="project-links" style="display: none;">
                 <a href="https://www.figma.com/proto/HIhUfBOLKg3N81VxhaVmqC/Soil-Analyzer?node-id=78-57&t=MVigyzi8PVLN1WNY-1&scaling=scale-down&content-scaling=fixed&page-id=9%3A57&starting-point-node-id=78%3A57" target="_blank" class="project-link">Live Demo</a>
                 <a href="#" target="_blank" class="project-link">Figma Project</a>
+              </div>
+            </div>
+          </div>
+          
+           <div class="card">
+            <div class="card-image">
+              <img src="assets/career.jpeg" alt="Career Launch" />
+              <div class="gradient-overlay"></div>
+              <div class="project-icon" aria-label="Project Icon">R</div>
+            </div>
+            <div class="card-content">
+              <h3 class="project-title">Career Launch</h3>
+              <p class="project-description">
+                Career Launch System is a web application designed to assist users in exploring and launching their careers. It provides resources such as job listings, resume building tools, interview preparation guides, and career advice to help individuals successfully navigate the job market.
+              </p>
+              <button class="view-project-btn">View Project</button>
+              <div class="project-links" style="display: none;">
+                <a href="https://www.figma.com/proto/QlBP3XFxOhbV5nAa3j5fwy/anna-marie-s-team-library?node-id=3311-2&p=f&t=E8CKOzekkfTrF2uX-0&scaling=scale-down&content-scaling=fixed&page-id=3311%3A2&starting-point-node-id=3404%3A75&show-proto-sidebar=1" target="_blank" class="project-link">Live Demo</a>
+                <a href="https://www.figma.com/design/QlBP3XFxOhbV5nAa3j5fwy/anna-marie-s-team-library?node-id=3311-2&p=f&t=E8CKOzekkfTrF2uX-0" target="_blank" class="project-link">Figma Wireframes</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-image">
+              <img src="assets/content.png" alt="Resume Generator" />
+              <div class="gradient-overlay"></div>
+              <div class="project-icon" aria-label="Project Icon">R</div>
+            </div>
+            <div class="card-content">
+              <h3 class="project-title">Bias Audit</h3>
+              <p class="project-description">
+               Bias Audit is a tool designed to help users identify and mitigate biases in their written content. By analyzing text for language patterns and potential prejudices, it provides actionable insights to promote fairness and inclusivity in communication.
+              </p>
+              <button class="view-project-btn">View Project</button>
+              <div class="project-links" style="display: none;">
+                <a href="https://github.com/nkheso/bias-audit" target="_blank" class="project-link">Live Demo</a>
+                <a href="https://github.com/nkheso/bias-audit" target="_blank" class="project-link">GitHub Repo</a>
               </div>
             </div>
           </div>
@@ -1316,107 +1608,183 @@ This helps farmers improve yields, save resources, and make sustainable farming 
     </div>
   </section>
 
-  <!-- Skills Section -->
-  <section id="skills">
-    <div class="container">
-      <h2 style="text-align: center; margin-bottom: 20px;">My Skills</h2>
-      <p style="text-align: center; max-width: 700px; margin: 0 auto 40px;">Here are some of the technologies and tools I work with to create amazing digital experiences.</p>
-      
-      <div class="skills-container">
-        <div class="skill-card">
-          <div class="skill-icon">
-            <i class="fab fa-html5"></i>
-          </div>
-          <h3 class="skill-name">HTML/CSS</h3>
-          <div class="skill-level">
-            <div class="skill-progress" style="width: 90%;"></div>
-          </div>
-          <p>Creating responsive and accessible web layouts with modern CSS techniques.</p>
-        </div>
-        
-        <div class="skill-card">
-          <div class="skill-icon">
-            <i class="fab fa-js"></i>
-          </div>
-          <h3 class="skill-name">JavaScript</h3>
-          <div class="skill-level">
-            <div class="skill-progress" style="width: 85%;"></div>
-          </div>
-          <p>Building interactive web applications with vanilla JavaScript and modern frameworks.</p>
-        </div>
-        
-        <div class="skill-card">
-          <div class="skill-icon">
-            <i class="fab fa-figma"></i>
-          </div>
-          <h3 class="skill-name">Figma</h3>
-          <div class="skill-level">
-            <div class="skill-progress" style="width: 80%;"></div>
-          </div>
-          <p>Designing user interfaces and prototypes with attention to usability and aesthetics.</p>
-        </div>
-        
-        <div class="skill-card">
-          <div class="skill-icon">
-            <i class="fab fa-python"></i>
-          </div>
-          <h3 class="skill-name">Python</h3>
-          <div class="skill-level">
-            <div class="skill-progress" style="width: 75%;"></div>
-          </div>
-          <p>Developing backend solutions and automation scripts using Python and its frameworks.</p>
-        </div>
-        
-        <div class="skill-card">
-          <div class="skill-icon">
-            <i class="fab fa-vuejs"></i>
-          </div>
-          <h3 class="skill-name">Vue.js</h3>
-          <div class="skill-level">
-            <div class="skill-progress" style="width: 70%;"></div>
-          </div>
-          <p>Building modern, reactive user interfaces with Vue.js framework.</p>
-        </div>
-        
-        <div class="skill-card">
-          <div class="skill-icon">
-            <i class="fab fa-git-alt"></i>
-          </div>
-          <h3 class="skill-name">Java</h3>
-          <div class="skill-level">
-            <div class="skill-progress" style="width: 85%;"></div>
-          </div>
-          <p>Object-oriented programming language widely used for building enterprise applications and Android development.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- Certifications Section -->
   <section id="certifications">
     <div class="container">
       <h2 style="text-align: center; margin-bottom: 20px;">Certifications</h2>
       <p style="text-align: center; max-width: 700px; margin: 0 auto 40px;">Here are some of the certifications I've achieved through continuous learning and professional development.</p>
       
-      <div class="certifications-gallery">
-        <img src="assets/quiz2.png" alt="Certificate 1">
-        <img src="assets/khenso.png" alt="Certificate 2">
-        <img src="assets/intel.png" alt="Certificate 2">
-        <img src="assets/ibm.png" alt="Certificate 2">
-        <img src="assets/ai.png" alt="Certificate 2">
-        <img src="assets/goo.png" alt="Certificate 2">
+      <div class="certifications-container">
+        <div class="certification-category">
+          <h3>Technical Certifications</h3>
+          <div class="certifications-gallery">
+            <div class="certificate-item" data-certificate="assets/quiz2.png">
+              <img src="assets/quiz2.png" alt="Certificate 1">
+              <div class="certificate-overlay">
+                <button class="view-certificate-btn">View Certificate</button>
+              </div>
+            </div>
+             <div class="certificate-item" data-certificate="assets/khenso.png">
+              <img src="assets/khenso.png" alt="Certificate 3">
+              <div class="certificate-overlay">
+                <button class="view-certificate-btn">View Certificate</button>
+              </div>
+            </div>
+            <div class="certificate-item" data-certificate="assets/intel.png">
+              <img src="assets/intel.png" alt="Certificate 3">
+              <div class="certificate-overlay">
+                <button class="view-certificate-btn">View Certificate</button>
+              </div>
+            </div>
+            <div class="certificate-item" data-certificate="assets/ibm.png">
+              <img src="assets/ibm.png" alt="Certificate 4">
+              <div class="certificate-overlay">
+                <button class="view-certificate-btn">View Certificate</button>
+              </div>
+            </div>
+            <div class="certificate-item" data-certificate="assets/ai.png">
+              <img src="assets/ai.png" alt="Certificate 5">
+              <div class="certificate-overlay">
+                <button class="view-certificate-btn">View Certificate</button>
+              </div>
+            </div>
+            <div class="certificate-item" data-certificate="assets/web.png">
+              <img src="assets/web.png" alt="Certificate 7">
+              <div class="certificate-overlay">
+                <button class="view-certificate-btn">View Certificate</button>
+              </div>
+            </div>
+            <div class="certificate-item" data-certificate="assets/advanced.png">
+              <img src="assets/advanced.png" alt="Certificate 8">
+              <div class="certificate-overlay">
+                <button class="view-certificate-btn">View Certificate</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="certification-category">
+          <h3>Professional Certifications</h3>
+          <div class="certifications-gallery">
+            <div class="certificate-item" data-certificate="assets/comm1.png">
+              <img src="assets/comm1.png" alt="Certificate 2">
+              <div class="certificate-overlay">
+                <button class="view-certificate-btn">View Certificate</button>
+              </div>
+            </div>
+            <div class="certificate-item" data-certificate="assets/time.png">
+              <img src="assets/time.png" alt="Certificate 6">
+              <div class="certificate-overlay">
+                <button class="view-certificate-btn">View Certificate</button>
+              </div>
+            </div>
+            <div class="certificate-item" data-certificate="assets/comm2.png">
+              <img src="assets/comm2.png" alt="Certificate 7">
+              <div class="certificate-overlay">
+                <button class="view-certificate-btn">View Certificate</button>
+              </div>
+            </div>
+            <div class="certificate-item" data-certificate="assets/reselience.png">
+              <img src="assets/reselience.png" alt="Certificate 6">
+              <div class="certificate-overlay">
+                <button class="view-certificate-btn">View Certificate</button>
+              </div>
+            </div>
+            <div class="certificate-item" data-certificate="assets/dev.png">
+              <img src="assets/dev.png" alt="Certificate 7">
+              <div class="certificate-overlay">
+                <button class="view-certificate-btn">View Certificate</button>
+              </div>
+            </div>
+            <div class="certificate-item" data-certificate="assets/team.png">
+              <img src="assets/team.png" alt="Certificate 8">
+              <div class="certificate-overlay">
+                <button class="view-certificate-btn">View Certificate</button>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
+  <!-- Certificate Modal -->
+  <div class="certificate-modal">
+    <div class="modal-content">
+      <span class="close-modal">&times;</span>
+      <img src="" alt="Certificate">
+    </div>
+  </div>
+
   <!-- Experience Section -->
   <section id="experience">
     <div class="container">
-      <h2 style="text-align: center; margin-bottom: 40px;">Experience</h2>
+      <h2 style="text-align: center; margin-bottom: 40px;">Work Experience</h2>
       <div class="experience-item">
         <h3>Digital Associate – CAPACITI</h3>
         <em>July 2025 – Present</em>
-        <p>Gained hands-on experience in AI, web development, and applied machine learning through project-based learning. Built and deployed AI-powered tools like chatbots and dashboards, applied Agile practices and ethical AI, and delivered a capstone portfolio with industry certifications.</p>
+        <ul class="experience-points">
+          <li>Gained hands-on experience in AI, web development, and applied machine learning through project-based learning.</li>
+          <li>Built and deployed AI-powered tools like chatbots and dashboards.</li>
+          <li>Applied Agile practices and ethical AI principles in project development.</li>
+          <li>Delivered a capstone portfolio with industry certifications.</li>
+          <li>Collaborated with cross-functional teams to solve complex technical challenges.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Why Work With Me Section -->
+  <section id="why-work-with-me">
+    <div class="container">
+      <div class="section-header">
+        <h2>Why Work With Me</h2>
+        <p>I bring a unique combination of design thinking, technical skills, and problem-solving abilities to every project.</p>
+        <div class="divider"></div>
+      </div>
+      
+      <div class="benefits-grid">
+        <div class="benefit-card">
+          <div class="benefit-icon">
+            <i class="fas fa-lightbulb"></i>
+          </div>
+          <h3>Creative Problem Solver</h3>
+          <p>I approach challenges with innovative thinking and find elegant solutions that balance user needs with technical feasibility.</p>
+        </div>
+        
+        <div class="benefit-card">
+          <div class="benefit-icon">
+            <i class="fas fa-users"></i>
+          </div>
+          <h3>User-Centered Design</h3>
+          <p>My design process always starts with the user, ensuring intuitive experiences that meet both user and business goals.</p>
+        </div>
+        
+        <div class="benefit-card">
+          <div class="benefit-icon">
+            <i class="fas fa-code"></i>
+          </div>
+          <h3>Technical Expertise</h3>
+          <p>With skills in both design and development, I can bridge the gap between concept and implementation effectively.</p>
+        </div>
+        
+        <div class="benefit-card">
+          <div class="benefit-icon">
+            <i class="fas fa-rocket"></i>
+          </div>
+          <h3>Fast Learner</h3>
+          <p>I quickly adapt to new technologies and methodologies, ensuring I can contribute effectively to any project.</p>
+        </div>
+      </div>
+
+      <div class="action-buttons" style="text-align: center; margin-top: 40px;">
+        <a href="assets/Khenso Candidate CV V2 (2).pdf" class="btn" download="Khenso_Candidate_CV.pdf">
+          <i class="fas fa-download"></i> Download Resume
+        </a>
+        <a href="#contact" class="btn btn-outline">
+          <i class="fas fa-paper-plane"></i> Hire Me
+        </a>
       </div>
     </div>
   </section>
@@ -1489,6 +1857,9 @@ This helps farmers improve yields, save resources, and make sustainable farming 
           
           <!-- Form status message -->
           <p id="form-status"></p>
+        </div>
+      </div>
+    </div>
   </section>
 
   <!-- Footer -->
@@ -1510,7 +1881,14 @@ This helps farmers improve yields, save resources, and make sustainable farming 
   </footer>
 
   <script>
-    
+     // Add the navigation update for the new Journey section
+    document.addEventListener('DOMContentLoaded', function() {
+      // Update navigation to include Journey
+      const navLinks = document.querySelectorAll('.nav-link');
+      const hamburger = document.querySelector('.hamburger');
+      const navLinksContainer = document.querySelector('.nav-links');
+
+      
     // Navigation and Mobile Menu functionality
     document.addEventListener('DOMContentLoaded', function() {
       const navLinks = document.querySelectorAll('.nav-link');
@@ -1570,7 +1948,7 @@ This helps farmers improve yields, save resources, and make sustainable farming 
       });
     });
 
-      // Project Slider
+    // Project Slider
     document.addEventListener('DOMContentLoaded', function() {
       const slider = document.querySelector('.cards-slider');
       const prevBtn = document.querySelector('.prev-arrow');
@@ -1601,7 +1979,9 @@ This helps farmers improve yields, save resources, and make sustainable farming 
           left: scrollAmount,
           behavior: 'smooth'
         });
-      });      // View Project buttons
+      });
+
+      // View Project buttons
       document.querySelectorAll('.view-project-btn').forEach(btn => {
         btn.addEventListener('click', () => {
           const links = btn.nextElementSibling;
@@ -1616,71 +1996,68 @@ This helps farmers improve yields, save resources, and make sustainable farming 
       });
     });
 
-    // Welcome Animation
+    // Certificate Modal
     document.addEventListener('DOMContentLoaded', function() {
-      const welcomeSection = document.getElementById('welcome-animation');
-      const welcomeText = document.querySelector('.welcome-text');
-      const welcomeSubtext = document.querySelector('.welcome-subtext');
-      
-      // Animate welcome text
-      setTimeout(() => {
-        welcomeText.style.opacity = '1';
-        welcomeText.style.transform = 'translateY(0)';
-        welcomeText.style.transition = 'opacity 1s ease, transform 1s ease';
-      }, 500);
-      
-      // Animate subtext
-      setTimeout(() => {
-        welcomeSubtext.style.opacity = '1';
-        welcomeSubtext.style.transition = 'opacity 1s ease';
-      }, 1500);
-      
-      // Hide welcome section and show main content
-      setTimeout(() => {
-        welcomeSection.style.opacity = '0';
-        welcomeSection.style.transition = 'opacity 1s ease';
-        setTimeout(() => {
-          welcomeSection.style.display = 'none';
-        }, 1000);
-      }, 3500);
-    });
-  // Form submission handler
-  document.addEventListener('DOMContentLoaded', function() {
-    const form = document.getElementById('contact-form');
-    const status = document.getElementById('form-status');
-    
-    form.addEventListener("submit", function(e) {
-      e.preventDefault();
-      const formData = new FormData(form);
-      
-      fetch(form.action, {
-        method: form.method,
-        body: formData,
-        headers: {
-            'Accept': 'application/json'
+      const certificateItems = document.querySelectorAll('.certificate-item');
+      const modal = document.querySelector('.certificate-modal');
+      const modalImg = modal.querySelector('img');
+      const closeModal = document.querySelector('.close-modal');
+
+      certificateItems.forEach(item => {
+        item.addEventListener('click', () => {
+          const certificateSrc = item.getAttribute('data-certificate');
+          modalImg.src = certificateSrc;
+          modal.classList.add('active');
+        });
+      });
+
+      closeModal.addEventListener('click', () => {
+        modal.classList.remove('active');
+      });
+
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+          modal.classList.remove('active');
         }
-      }).then(response => {
-        if (response.ok) {
-          status.textContent = "Message successfully sent! We will get in touch soon.";
-          status.className = "show success";
-          form.reset();
-        } else {
-          response.json().then(data => {
-            if (data.errors) {
-              status.textContent = data.errors.map(error => error.message).join(", ");
-            } else {
-              status.textContent = "Oops! There was a problem submitting your form";
-            }
-            status.className = "show error";
-          });
-        }
-      }).catch(error => {
-        status.textContent = "Oops! There was a problem submitting your form";
-        status.className = "show error";
       });
     });
-  });
 
-</script>
+    // Form submission handler
+    document.addEventListener('DOMContentLoaded', function() {
+      const form = document.getElementById('contact-form');
+      const status = document.getElementById('form-status');
+      
+      form.addEventListener("submit", function(e) {
+        e.preventDefault();
+        const formData = new FormData(form);
+        
+        fetch(form.action, {
+          method: form.method,
+          body: formData,
+          headers: {
+              'Accept': 'application/json'
+          }
+        }).then(response => {
+          if (response.ok) {
+            status.textContent = "Message successfully sent! We will get in touch soon.";
+            status.className = "show success";
+            form.reset();
+          } else {
+            response.json().then(data => {
+              if (data.errors) {
+                status.textContent = data.errors.map(error => error.message).join(", ");
+              } else {
+                status.textContent = "Oops! There was a problem submitting your form";
+              }
+              status.className = "show error";
+            });
+          }
+        }).catch(error => {
+          status.textContent = "Oops! There was a problem submitting your form";
+          status.className = "show error";
+        });
+      });
+    });
+  </script>
 </body>
 </html>
