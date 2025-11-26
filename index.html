@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Nkheso | Portfolio</title>
+  <title>Nkheso Mathebula | UI/UX Designer & Digital Associate</title>
+  <meta name="description" content="Portfolio of Nkheso Mathebula - UI/UX Designer & Digital Associate specializing in creating intuitive digital experiences">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     /* ------------------------------
@@ -17,7 +18,7 @@
       --light: #fdfaf3;
       --gray: #6b7280;
       --gray-light: #e5e7eb;
-    --purple: #8b5cf6;
+      --purple: #8b5cf6;
     }
     
     * {
@@ -106,7 +107,7 @@
     /* ------------------------------
        Navigation Bar
     ------------------------------ */
-     header {
+    header {
       position: fixed;
       top: 0;
       left: 0;
@@ -116,6 +117,12 @@
       box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
       backdrop-filter: blur(10px);
       -webkit-backdrop-filter: blur(10px);
+      transition: all 0.3s ease;
+    }
+    
+    header.scrolled {
+      background: rgba(255, 255, 255, 0.98);
+      box-shadow: 0 5px 30px rgba(0, 0, 0, 0.15);
     }
     
     nav {
@@ -191,6 +198,7 @@
       border: none;
       color: var(--dark);
       font-size: 24px;
+      z-index: 1001;
     }
 
     /* ------------------------------
@@ -224,50 +232,52 @@
       background: var(--primary);
       color: white;
     }
-/* Target existing centered headers */
-section .container > h2[style*="text-align: center"] {
-  text-align: center !important;
-  margin-bottom: 15px !important;
-  position: relative;
-  display: inline-block;
-  left: 50%;
-  transform: translateX(-50%);
-}
 
-section .container > h2[style*="text-align: center"]::after {
-  content: '';
-  position: absolute;
-  bottom: -10px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 60px;
-  height: 4px;
-  background: linear-gradient(to right, var(--primary), var(--secondary));
-  border-radius: 2px;
-}
+    /* Target existing centered headers */
+    section .container > h2[style*="text-align: center"] {
+      text-align: center !important;
+      margin-bottom: 15px !important;
+      position: relative;
+      display: inline-block;
+      left: 50%;
+      transform: translateX(-50%);
+    }
 
-section .container > p[style*="text-align: center"] {
-  max-width: 600px;
-  margin: 30px auto 40px !important;
-  font-size: 1.1rem;
-}
+    section .container > h2[style*="text-align: center"]::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 4px;
+      background: linear-gradient(to right, var(--primary), var(--secondary));
+      border-radius: 2px;
+    }
+
+    section .container > p[style*="text-align: center"] {
+      max-width: 600px;
+      margin: 30px auto 40px !important;
+      font-size: 1.1rem;
+    }
+
     /* ------------------------------
        Hero Section
     ------------------------------ */
     .hero {
-      /* Keep section spacing; layout is handled by the inner .container */
       min-height: 100vh;
       padding: 80px 0;
       margin-bottom: 20px;
+      display: flex;
+      align-items: center;
     }
 
-    /* Use the inner container to align image and text side-by-side */
     .hero .container {
       display: flex;
       justify-content: space-between;
       align-items: center;
       gap: 32px;
-      flex-wrap: nowrap; /* keep them side-by-side on larger screens */
+      flex-wrap: nowrap;
     }
 
     .hero-text {
@@ -372,6 +382,27 @@ section .container > p[style*="text-align: center"] {
       margin-bottom: 25px;
     }
 
+    .location-info {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin: 10px 0;
+    }
+
+    .availability-info {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin: 10px 0;
+    }
+
+    .green-dot {
+      width: 10px;
+      height: 10px;
+      background: limegreen;
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
 
     /* ------------------------------
        Why Work With Me Section
@@ -464,10 +495,11 @@ section .container > p[style*="text-align: center"] {
       display: block;
       margin-bottom: 15px;
     }
+    
     .education-item .institution {
-  color: var(--purple);
-  font-weight: 600;
-}
+      color: var(--purple);
+      font-weight: 600;
+    }
 
     /* ------------------------------
        Skills Section - Updated Layout
@@ -558,6 +590,8 @@ section .container > p[style*="text-align: center"] {
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
       overflow: hidden;
       transition: all 0.3s ease;
+      display: flex;
+      flex-direction: column;
     }
 
     .card:hover {
@@ -612,7 +646,7 @@ section .container > p[style*="text-align: center"] {
       border: none;
       padding: 12px;
       border-radius: 6px;
-      margin-top: 15px;
+      margin-top: auto;
       cursor: pointer;
       font-weight: 600;
       transition: all 0.3s ease;
@@ -687,6 +721,9 @@ section .container > p[style*="text-align: center"] {
 
     .card-content {
       padding: 20px;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
     }
 
     .project-title {
@@ -704,6 +741,7 @@ section .container > p[style*="text-align: center"] {
     .project-description {
       color: var(--gray);
       margin-bottom: 15px;
+      flex-grow: 1;
     }
 
     /* ------------------------------
@@ -747,23 +785,25 @@ section .container > p[style*="text-align: center"] {
       font-size: 1.5rem;
       line-height: 1;
     }
-.experience-item .company {
-  color: var(--purple);
-  font-weight: 600;
-}
+    
+    .experience-item .company {
+      color: var(--purple);
+      font-weight: 600;
+    }
 
-.experience-item .current-role {
-  font-weight: 600;
-  margin-bottom: 15px;
-  color: var(--dark);
-}
+    .experience-item .current-role {
+      font-weight: 600;
+      margin-bottom: 15px;
+      color: var(--dark);
+    }
 
-.key-achievements {
-  margin-top: 20px;
-  margin-bottom: 10px;
-  font-weight: 700;
-  color: var(--primary);
-}
+    .key-achievements {
+      margin-top: 20px;
+      margin-bottom: 10px;
+      font-weight: 700;
+      color: var(--primary);
+    }
+
     /* ------------------------------
        Certifications Section - Updated Layout
     ------------------------------ */
@@ -787,70 +827,119 @@ section .container > p[style*="text-align: center"] {
       display: inline-block;
     }
 
-    .certifications-gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 25px;
+    .carousel-container {
+      position: relative;
+      margin: 20px 0;
     }
 
-    .certificate-item {
+    .certificates-grid {
+      display: flex;
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+      gap: 25px;
+      padding: 20px 0;
+      -webkit-overflow-scrolling: touch;
+      position: relative;
+      scroll-snap-type: x mandatory;
+      touch-action: pan-x;
+    }
+
+    .certificate-card {
       position: relative;
       border-radius: 12px;
       overflow: hidden;
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
       transition: all 0.3s ease;
       cursor: pointer;
-      height: 200px;
+      height: 300px;
+      flex: 0 0 250px;
+      background: white;
+      display: flex;
+      flex-direction: column;
     }
 
-    .certificate-item:hover {
+    .certificate-card:hover {
       transform: translateY(-10px);
       box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
     }
 
-    .certificate-item img {
+    .certificate-preview {
+      height: 200px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #f5f5f5;
+    }
+
+    .certificate-preview img {
       width: 100%;
       height: 100%;
       object-fit: cover;
       transition: transform 0.5s ease;
     }
 
-    .certificate-item:hover img {
-      transform: scale(1.05);
-    }
-
-    .certificate-overlay {
-      position: absolute;
-      top: 0;
-      left: 0;
+    .certificate-preview embed {
       width: 100%;
       height: 100%;
-      background: rgba(0, 0, 0, 0.7);
+      border: none;
+    }
+
+    .certificate-card:hover .certificate-preview img {
+      transform: scale(1.05);
+    }
+
+    .certificate-info {
+      padding: 15px;
+      text-align: center;
+      flex-grow: 1;
       display: flex;
+      flex-direction: column;
       justify-content: center;
-      align-items: center;
-      opacity: 0;
-      transition: opacity 0.3s ease;
     }
 
-    .certificate-item:hover .certificate-overlay {
-      opacity: 1;
+    .certificate-info h3 {
+      font-size: 1.2rem;
+      color: var(--dark);
+      margin-bottom: 10px;
     }
 
-    .view-certificate-btn {
+    .certificate-info p {
+      color: var(--gray);
+      font-size: 0.9rem;
+    }
+
+    .carousel-nav-arrow {
       background: var(--primary);
       color: white;
-      padding: 10px 20px;
-      border-radius: 30px;
-      font-weight: 600;
       border: none;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       cursor: pointer;
       transition: all 0.3s ease;
+      z-index: 10;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
     }
 
-    .view-certificate-btn:hover {
+    .carousel-nav-arrow:hover {
       background: var(--primary-dark);
-      transform: scale(1.05);
+      transform: translateY(-50%) scale(1.1);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    .carousel-nav-arrow.prev {
+      left: -20px;
+    }
+
+    .carousel-nav-arrow.next {
+      right: -20px;
     }
 
     /* Certificate Modal */
@@ -1114,8 +1203,65 @@ section .container > p[style*="text-align: center"] {
       margin-top: 80px;
     }
 
-    footer .socials {
+    .footer-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 25px;
+    }
+
+    .footer-socials {
+      display: flex;
+      gap: 15px;
       margin-bottom: 20px;
+    }
+
+    .footer-socials a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 45px;
+      height: 45px;
+      background: rgba(255, 255, 255, 0.1);
+      color: white;
+      border-radius: 50%;
+      transition: all 0.3s ease;
+    }
+
+    .footer-socials a:hover {
+      background: var(--primary);
+      transform: translateY(-3px);
+    }
+
+    .services-offered {
+      max-width: 600px;
+      margin: 0 auto 20px;
+    }
+
+    .services-offered h3 {
+      color: white;
+      margin-bottom: 15px;
+      font-size: 1.5rem;
+    }
+
+    .services-list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+      list-style: none;
+    }
+
+    .services-list li {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 8px 15px;
+      border-radius: 20px;
+      font-size: 0.9rem;
+    }
+
+    .copyright {
+      margin-top: 20px;
+      color: rgba(255, 255, 255, 0.7);
     }
 
     /* ------------------------------
@@ -1169,8 +1315,12 @@ section .container > p[style*="text-align: center"] {
         padding: 40px 20px;
       }
 
-      .certifications-gallery {
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      .certificate-card {
+        flex: 0 0 200px;
+      }
+      
+      .benefits-grid {
+        grid-template-columns: 1fr 1fr;
       }
     }
 
@@ -1249,12 +1399,17 @@ section .container > p[style*="text-align: center"] {
         gap: 20px;
       }
 
-      .certifications-gallery {
-        grid-template-columns: 1fr;
+      .certificate-card {
+        flex: 0 0 180px;
       }
 
       .skills-grid {
         grid-template-columns: 1fr;
+      }
+      
+      .services-list {
+        flex-direction: column;
+        align-items: center;
       }
     }
   </style>
@@ -1290,7 +1445,7 @@ section .container > p[style*="text-align: center"] {
   <section id="home" class="hero">
     <div class="container">
       <div class="hero-img">
-        <img src="assets/Media (2).jfif" alt="Nkheso">
+        <img src="assets/Media (2).jfif" alt="Nkheso Mathebula - UI/UX Designer & Digital Associate" loading="lazy">
       </div>
 
       <div class="hero-text">
@@ -1300,13 +1455,13 @@ section .container > p[style*="text-align: center"] {
         
         <!-- Social Links -->
         <div class="socials">
-          <a href="https://www.linkedin.com/in/mathebula-nkheso-26b8b6272/" target="_blank">
+          <a href="https://www.linkedin.com/in/mathebula-nkheso-26b8b6272/" target="_blank" aria-label="LinkedIn Profile">
             <i class="fab fa-linkedin-in"></i>
           </a>
-          <a href="https://github.com/nkheso" target="_blank">
+          <a href="https://github.com/nkheso" target="_blank" aria-label="GitHub Profile">
             <i class="fab fa-github"></i>
           </a>
-          <a href="mailto:mathebulankheso8@gmail.com">
+          <a href="mailto:mathebulankheso8@gmail.com" aria-label="Send Email">
             <i class="fas fa-envelope"></i>
           </a>
         </div>
@@ -1324,21 +1479,27 @@ section .container > p[style*="text-align: center"] {
   <section id="about">
     <div class="container">
       <div class="about-flex">
-        <img src="assets/rito.jfif" alt="Nkheso Mathebula" class="about-img">
+        <img src="assets/rito.jfif" alt="Nkheso Mathebula" class="about-img" loading="lazy">
         <div class="about-text">
           <h2>About Me</h2>
           <p>
-            I'm a motivated UI/UX Designer & Digital Associate with a strong foundation in user-centered design, web development, and digital solutions. My experience spans creating responsive websites, designing intuitive user interfaces, and applying AI tools to solve real-world challenges. I enjoy blending creativity with problem-solving—whether it's designing a clean digital experience, optimizing workflows, or experimenting with emerging technologies.
+            I'm a motivated UI/UX Designer & Digital Associate with a strong foundation in user-centered design, web development, and digital solutions. My experience spans creating responsive websites, designing intuitive user interfaces, and applying AI tools to solve real-world challenges. I enjoy blending creativity with problem-solving whether it's designing a clean digital experience, optimizing workflows, or experimenting with emerging technologies.
 
-I thrive in collaborative environments, continuously learning, and adapting to new trends in tech. My goal is to contribute to impactful projects where I can grow as a designer while delivering value through innovative and practical digital solutions.<br><br>
-            Woodstock, Cape Town<br>
-            Available for new opportunities</p>
-        </p> 
+I thrive in collaborative environments, continuously learning, and adapting to new trends in tech. My goal is to contribute to impactful projects where I can grow as a designer while delivering value through innovative and practical digital solutions.
+          </p>
+          <div class="location-info">
+            <i class="fas fa-map-marker-alt" style="color: var(--primary);"></i>
+            <span>Woodstock, Cape Town</span>
+          </div>
+          <div class="availability-info">
+            <span class="green-dot"></span>
+            <span>Available for new opportunities</span>
+          </div>
 
           <a href="assets/Khenso Candidate CV V2 (2).pdf" class="btn" download="Khenso_Candidate_CV.pdf">Hire Me</a>
         </div>
       </div>
-   
+    </div>
   </section>
 
   <!-- Education Section -->
@@ -1351,13 +1512,13 @@ I thrive in collaborative environments, continuously learning, and adapting to n
         <div class="education-item">
           <h3>Diploma in ICT Applications Development</h3>
           <div class="institution">Cape Peninsula University of Technology</div>
-          <em>Feb 2023 - Dec 2025(In Progress)</em>
+          <em>Feb 2023 - Dec 2025 (In Progress)</em>
           <p>Currently pursuing a comprehensive diploma focused on software development, web technologies, and application design principles.</p>
         </div>
         
         <div class="education-item">
           <h3>National Senior Certificate (Matric)</h3>
-  <div class="institution">Ndhambi High School</div>
+          <div class="institution">Ndhambi High School</div>
           <em>Completed 2022</em>
           <p>Successfully completed secondary education with a focus on foundational knowledge, preparing for further academic and professional development.</p>
         </div>
@@ -1365,98 +1526,89 @@ I thrive in collaborative environments, continuously learning, and adapting to n
     </div>
   </section>
 
-<!-- Skills Section -->
-<section id="skills">
-  <div class="container">
-    <h2 style="text-align: center; margin-bottom: 20px;">My Skills</h2>
-    <p style="text-align: center; max-width: 700px; margin: 0 auto 40px;">
-      A brief overview of my technical and soft skills.
-    </p>
+  <!-- Skills Section -->
+  <section id="skills">
+    <div class="container">
+      <h2 style="text-align: center; margin-bottom: 20px;">My Skills</h2>
+      <p style="text-align: center; max-width: 700px; margin: 0 auto 40px;">
+        A brief overview of my technical and soft skills.
+      </p>
 
-    <div class="skills-grid">
-      <!-- Soft Skills -->
-      <div class="skill-category">
-        <h3>Soft Skills</h3>
-        <ul class="skill-list">
-          <li class="skill-item">
-    <div class="skill-name">Problem Solving</div>
-    <div class="skill-description">Ability to analyze problems and find effective solutions.</div>
-  </li>
-
-  <li class="skill-item">
-    <div class="skill-name">Critical Thinking</div>
-    <div class="skill-description">Evaluating information logically to make informed decisions.</div>
-  </li>
-
-  <li class="skill-item">
-    <div class="skill-name">Communication</div>
-    <div class="skill-description">Clear and professional verbal and written communication.</div>
-  </li>
-
-  <li class="skill-item">
-    <div class="skill-name">Team Collaboration</div>
-    <div class="skill-description">Working effectively with others to achieve shared goals.</div>
-  </li>
-
-  <li class="skill-item">
-    <div class="skill-name">Time Management</div>
-    <div class="skill-description">Organizing tasks and meeting deadlines effectively.</div>
-  </li>
-
-  <li class="skill-item">
-    <div class="skill-name">Adaptability</div>
-    <div class="skill-description">Quickly adjusting to new tools, tasks, and environments.</div>
-  </li>
-        </ul>
-      </div>
-
-      <!-- Technical Skills -->
-      <div class="skill-category">
-        <h3>Technical Skills</h3>
-        <ul class="skill-list">
+      <div class="skills-grid">
+        <!-- Soft Skills -->
+        <div class="skill-category">
+          <h3>Soft Skills</h3>
           <ul class="skill-list">
+            <li class="skill-item">
+              <div class="skill-name">Problem Solving</div>
+              <div class="skill-description">Ability to analyze problems and find effective solutions.</div>
+            </li>
 
-    <!-- Programming & Web Development -->
-    <li class="skill-item">
-      <div class="skill-name">Programming & Web Development</div>
-      <div class="skill-description">HTML, CSS, JavaScript, Python</div>
-    </li>
+            <li class="skill-item">
+              <div class="skill-name">Critical Thinking</div>
+              <div class="skill-description">Evaluating information logically to make informed decisions.</div>
+            </li>
 
-    <!-- UI/UX Design -->
-    <li class="skill-item">
-      <div class="skill-name">UI/UX Design</div>
-      <div class="skill-description">Figma, Wireframing, Prototyping, User Flows</div>
-    </li>
+            <li class="skill-item">
+              <div class="skill-name">Communication</div>
+              <div class="skill-description">Clear and professional verbal and written communication.</div>
+            </li>
 
-    <!-- AI & Machine Learning -->
-    <li class="skill-item">
-      <div class="skill-name">AI & Machine Learning</div>
-      <div class="skill-description">Python for AI/ML, Prompt Engineering, Building AI tools, Deployment Basics</div>
-    </li>
+            <li class="skill-item">
+              <div class="skill-name">Team Collaboration</div>
+              <div class="skill-description">Working effectively with others to achieve shared goals.</div>
+            </li>
 
-    <!-- Databases -->
-    <li class="skill-item">
-      <div class="skill-name">Databases</div>
-      <div class="skill-description">SQL</div>
-    </li>
+            <li class="skill-item">
+              <div class="skill-name">Time Management</div>
+              <div class="skill-description">Organizing tasks and meeting deadlines effectively.</div>
+            </li>
 
-    <!-- Version Control -->
-    <li class="skill-item">
-      <div class="skill-name">Version Control</div>
-      <div class="skill-description">Git, GitHub</div>
-    </li>
+            <li class="skill-item">
+              <div class="skill-name">Adaptability</div>
+              <div class="skill-description">Quickly adjusting to new tools, tasks, and environments.</div>
+            </li>
+          </ul>
+        </div>
 
-    <!-- Integration & APIs -->
-    <li class="skill-item">
-      <div class="skill-name">Integration & APIs</div>
-      <div class="skill-description">RESTful API Integration</div>
-    </li>
-        </ul>
+        <!-- Technical Skills -->
+        <div class="skill-category">
+          <h3>Technical Skills</h3>
+          <ul class="skill-list">
+            <li class="skill-item">
+              <div class="skill-name">Programming & Web Development</div>
+              <div class="skill-description">HTML, CSS, JavaScript, Python</div>
+            </li>
+
+            <li class="skill-item">
+              <div class="skill-name">UI/UX Design</div>
+              <div class="skill-description">Figma, Wireframing, Prototyping, User Flows</div>
+            </li>
+
+            <li class="skill-item">
+              <div class="skill-name">AI & Machine Learning</div>
+              <div class="skill-description">Python for AI/ML, Prompt Engineering, Building AI tools, Deployment Basics</div>
+            </li>
+
+            <li class="skill-item">
+              <div class="skill-name">Databases</div>
+              <div class="skill-description">SQL</div>
+            </li>
+
+            <li class="skill-item">
+              <div class="skill-name">Version Control</div>
+              <div class="skill-description">Git, GitHub</div>
+            </li>
+
+            <li class="skill-item">
+              <div class="skill-name">Integration & APIs</div>
+              <div class="skill-description">RESTful API Integration</div>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
-  </div>
-</section>
-
+  </section>
 
   <!-- My Projects -->
   <section id="projects">
@@ -1465,21 +1617,21 @@ I thrive in collaborative environments, continuously learning, and adapting to n
       <p style="text-align: center; max-width: 700px; margin: 0 auto 40px;">A showcase of my work and contributions to various projects.</p>
       
       <div class="featured-projects-container">
-        <button class="nav-arrow prev-arrow">
+        <button class="nav-arrow prev-arrow" aria-label="Previous projects">
           <i class="fas fa-chevron-left"></i>
         </button>
         
         <div class="cards-slider">
           <div class="card">
             <div class="card-image">
-              <img src="assets/author.png" alt="Content Generator" />
+              <img src="assets/author.png" alt="Author Portfolio Project" loading="lazy" />
               <div class="gradient-overlay"></div>
               <div class="project-icon" aria-label="Project Icon">G</div>
             </div>
             <div class="card-content">
               <h3 class="project-title">Author Portfolio</h3>
               <p class="project-description">
-                Äuthor is a portfolio website for author Chimamanda to showcase her work and connect with readers.
+                A portfolio website for author Chimamanda to showcase her work and connect with readers through an elegant, user-friendly interface.
               </p>
               <button class="view-project-btn" onclick="toggleProjectLinks(this)">View Project</button>
               <div class="project-links">
@@ -1488,16 +1640,17 @@ I thrive in collaborative environments, continuously learning, and adapting to n
               </div>
             </div>
           </div>
+          
           <div class="card">
             <div class="card-image">
-              <img src="assets/sentiment.png" alt="Sentiment Analysis" />
+              <img src="assets/sentiment.png" alt="Sentiment Analysis Dashboard Project" loading="lazy" />
               <div class="gradient-overlay"></div>
               <div class="project-icon" aria-label="Project Icon">S</div>
             </div>
             <div class="card-content">
               <h3 class="project-title">Sentiment Analysis Dashboard</h3>
               <p class="project-description">
-                A comprehensive dashboard for analyzing sentiment across various data sources and social media platforms.
+                A comprehensive dashboard for analyzing sentiment across various data sources and social media platforms with interactive visualizations.
               </p>
               <button class="view-project-btn" onclick="toggleProjectLinks(this)">View Project</button>
               <div class="project-links" style="display: none;">
@@ -1509,14 +1662,14 @@ I thrive in collaborative environments, continuously learning, and adapting to n
 
           <div class="card">
             <div class="card-image">
-              <img src="assets/content.png" alt="Content Generator" />
+              <img src="assets/content.png" alt="AI Content Generator Project" loading="lazy" />
               <div class="gradient-overlay"></div>
               <div class="project-icon" aria-label="Project Icon">G</div>
             </div>
             <div class="card-content">
               <h3 class="project-title">AI Content Generator</h3>
               <p class="project-description">
-                A powerful tool for generating custom content using AI technology.
+                A powerful tool for generating custom content using AI technology with customizable templates and output formats.
               </p>
               <button class="view-project-btn" onclick="toggleProjectLinks(this)">View Project</button>
               <div class="project-links" style="display: none;">
@@ -1525,16 +1678,17 @@ I thrive in collaborative environments, continuously learning, and adapting to n
               </div>
             </div>
           </div>
-<div class="card">
+          
+          <div class="card">
             <div class="card-image">
-              <img src="assets/study.jpeg" alt="MyStudyTask Master" />
+              <img src="assets/study.jpeg" alt="MyStudyTask Master Project" loading="lazy" />
               <div class="gradient-overlay"></div>
               <div class="project-icon" aria-label="Project Icon">R</div>
             </div>
             <div class="card-content">
               <h3 class="project-title">MyStudyTask Master</h3>
               <p class="project-description">
-                A website that helps students manage their study tasks effectively.
+                A website that helps students manage their study tasks effectively with progress tracking and deadline reminders.
               </p>
               <button class="view-project-btn" onclick="toggleProjectLinks(this)">View Project</button>
               <div class="project-links" style="display: none;">
@@ -1543,16 +1697,17 @@ I thrive in collaborative environments, continuously learning, and adapting to n
               </div>
             </div>
           </div>
+          
           <div class="card">
             <div class="card-image">
-              <img src="assets/chatbot.png" alt="AI Chatbot" />
+              <img src="assets/chatbot.png" alt="AI Chatbot Project" loading="lazy" />
               <div class="gradient-overlay"></div>
               <div class="project-icon" aria-label="Project Icon">C</div>
             </div>
             <div class="card-content">
               <h3 class="project-title">AI Chatbot</h3>
               <p class="project-description">
-                An intelligent chatbot that helps users with basic AI questions and provides helpful resources.
+                An intelligent chatbot that helps users with basic AI questions and provides helpful resources with natural conversation flow.
               </p>
               <button class="view-project-btn" onclick="toggleProjectLinks(this)">View Project</button>
               <div class="project-links" style="display: none;">
@@ -1564,14 +1719,14 @@ I thrive in collaborative environments, continuously learning, and adapting to n
 
           <div class="card">
             <div class="card-image">
-              <img src="assets/resume g.png" alt="Resume Generator" />
+              <img src="assets/resume g.png" alt="Resume Generator Project" loading="lazy" />
               <div class="gradient-overlay"></div>
               <div class="project-icon" aria-label="Project Icon">R</div>
             </div>
             <div class="card-content">
               <h3 class="project-title">Resume Generator</h3>
               <p class="project-description">
-                A tool for creating professional resumes with custom templates.
+                A tool for creating professional resumes with custom templates and automated formatting for different industries.
               </p>
               <button class="view-project-btn" onclick="toggleProjectLinks(this)">View Project</button>
               <div class="project-links" style="display: none;">
@@ -1581,19 +1736,16 @@ I thrive in collaborative environments, continuously learning, and adapting to n
             </div>
           </div>
 
-
-
-
- <div class="card">
+          <div class="card">
             <div class="card-image">
-              <img src="assets/HIV Awareness.jpeg" alt="Resume Generator" />
+              <img src="assets/HIV Awareness.jpeg" alt="HIV Awareness Project" loading="lazy" />
               <div class="gradient-overlay"></div>
               <div class="project-icon" aria-label="Project Icon">R</div>
             </div>
             <div class="card-content">
               <h3 class="project-title">HIV Awareness</h3>
               <p class="project-description">
-                A website that raises awareness about HIV.
+                A website that raises awareness about HIV with educational resources and information about prevention and treatment.
               </p>
               <button class="view-project-btn" onclick="toggleProjectLinks(this)">View Project</button>
               <div class="project-links" style="display: none;">
@@ -1605,16 +1757,14 @@ I thrive in collaborative environments, continuously learning, and adapting to n
 
           <div class="card">
             <div class="card-image">
-              <img src="assets/prototype.png" alt="Soil Analyzer" />
+              <img src="assets/prototype.png" alt="Soil Analyzer Prototype Project" loading="lazy" />
               <div class="gradient-overlay"></div>
               <div class="project-icon" aria-label="Project Icon">P</div>
             </div>
             <div class="card-content">
               <h3 class="project-title">Soil Analyzer Prototype</h3>
               <p class="project-description">
-                Interactive prototype for a soil analysis application.analyzes soil through images and user inputs to determine its composition.
-                It then provides real-time crop recommendations tailored to the soil type.
-                This helps farmers improve yields, save resources, and make sustainable farming decisions.
+                Interactive prototype for a soil analysis application that provides crop recommendations based on soil composition.
               </p>
               <button class="view-project-btn" onclick="toggleProjectLinks(this)">View Project</button>
               <div class="project-links" style="display: none;">
@@ -1624,16 +1774,16 @@ I thrive in collaborative environments, continuously learning, and adapting to n
             </div>
           </div>
           
-           <div class="card">
+          <div class="card">
             <div class="card-image">
-              <img src="assets/career.jpeg" alt="Career Launch" />
+              <img src="assets/career.jpeg" alt="Career Launch Project" loading="lazy" />
               <div class="gradient-overlay"></div>
               <div class="project-icon" aria-label="Project Icon">R</div>
             </div>
             <div class="card-content">
               <h3 class="project-title">Career Launch</h3>
               <p class="project-description">
-                Career Launch System is a web application designed to assist users in exploring and launching their careers. It provides resources such as job listings, resume building tools, interview preparation guides, and career advice to help individuals successfully navigate the job market.
+                Career Launch System is a web application designed to assist users in exploring and launching their careers.
               </p>
               <button class="view-project-btn" onclick="toggleProjectLinks(this)">View Project</button>
               <div class="project-links" style="display: none;">
@@ -1645,14 +1795,14 @@ I thrive in collaborative environments, continuously learning, and adapting to n
 
           <div class="card">
             <div class="card-image">
-              <img src="assets/content.png" alt="Resume Generator" />
+              <img src="assets/content.png" alt="Bias Audit Project" loading="lazy" />
               <div class="gradient-overlay"></div>
               <div class="project-icon" aria-label="Project Icon">R</div>
             </div>
             <div class="card-content">
               <h3 class="project-title">Bias Audit</h3>
               <p class="project-description">
-               Bias Audit is a tool designed to help users identify and mitigate biases in their written content. By analyzing text for language patterns and potential prejudices, it provides actionable insights to promote fairness and inclusivity in communication.
+                A tool designed to help users identify and mitigate biases in their written content for more inclusive communication.
               </p>
               <button class="view-project-btn" onclick="toggleProjectLinks(this)">View Project</button>
               <div class="project-links" style="display: none;">
@@ -1663,7 +1813,7 @@ I thrive in collaborative environments, continuously learning, and adapting to n
           </div>
         </div>
 
-        <button class="nav-arrow next-arrow">
+        <button class="nav-arrow next-arrow" aria-label="Next projects">
           <i class="fas fa-chevron-right"></i>
         </button>
       </div>
@@ -1678,90 +1828,435 @@ I thrive in collaborative environments, continuously learning, and adapting to n
       
       <div class="certifications-container">
         <div class="certification-category">
-          <h3>Technical Certifications</h3>
-          <div class="certifications-gallery">
-            <div class="certificate-item" data-certificate="assets/quiz2.png">
-              <img src="assets/quiz2.png" alt="Certificate 1">
-              <div class="certificate-overlay">
-                <button class="view-certificate-btn">View Certificate</button>
+          <h3 style="text-align: center; margin-bottom: 30px;">Technical Certificates</h3>
+          <div class="carousel-container">
+            <button class="carousel-nav-arrow prev" onclick="scrollSection('technical-certificates', -1)" aria-label="Previous certificates">
+              <i class="fas fa-chevron-left"></i>
+            </button>
+            <button class="carousel-nav-arrow next" onclick="scrollSection('technical-certificates', 1)" aria-label="Next certificates">
+              <i class="fas fa-chevron-right"></i>
+            </button>
+            
+            <div class="certificates-grid" id="technical-certificates">
+              <!-- Most Important Technical Certificates (AI/ML Focus) -->
+              <div class="certificate-card" data-certificate="assets/Generative AI with Large Language Models.png">
+                <div class="certificate-preview">
+                  <img src="assets/Generative AI with Large Language Models.png" alt="Generative AI with Large Language Models Certificate Preview" loading="lazy">
+                </div>
+                <div class="certificate-info">
+                  <h3>Generative AI with Large Language Models</h3>
+                </div>
               </div>
-            </div>
-             <div class="certificate-item" data-certificate="assets/khenso.png">
-              <img src="assets/khenso.png" alt="Certificate 3">
-              <div class="certificate-overlay">
-                <button class="view-certificate-btn">View Certificate</button>
+              
+              <div class="certificate-card" data-certificate="assets/Supervised Machine Learning Regression and Classification.png">
+                <div class="certificate-preview">
+                  <img src="assets/Supervised Machine Learning Regression and Classification.png" alt="Supervised Machine Learning: Regression and Classification Certificate Preview" loading="lazy">
+                </div>
+                <div class="certificate-info">
+                  <h3>Supervised Machine Learning: Regression and Classification</h3>
+                </div>
               </div>
-            </div>
-            <div class="certificate-item" data-certificate="assets/intel.png">
-              <img src="assets/intel.png" alt="Certificate 3">
-              <div class="certificate-overlay">
-                <button class="view-certificate-btn">View Certificate</button>
+              
+              <div class="certificate-card" data-certificate="assets/Unsupervised Learning, Recommenders, Reinforcement Learning.png">
+                <div class="certificate-preview">
+                  <img src="assets/Unsupervised Learning, Recommenders, Reinforcement Learning.png" alt="Unsupervised Learning, Recommenders, Reinforcement Learning Certificate Preview" loading="lazy">
+                </div>
+                <div class="certificate-info">
+                  <h3>Unsupervised Learning, Recommenders, Reinforcement Learning</h3>
+                </div>
               </div>
-            </div>
-            <div class="certificate-item" data-certificate="assets/ibm.png">
-              <img src="assets/ibm.png" alt="Certificate 4">
-              <div class="certificate-overlay">
-                <button class="view-certificate-btn">View Certificate</button>
+              
+              <div class="certificate-card" data-certificate="assets/Advanced Learning Algorithms.png">
+                <div class="certificate-preview">
+                  <img src="assets/Advanced Learning Algorithms.png" alt="Advanced Learning Algorithms Certificate Preview" loading="lazy">
+                </div>
+                <div class="certificate-info">
+                  <h3>Advanced Learning Algorithms</h3>
+                </div>
               </div>
-            </div>
-            <div class="certificate-item" data-certificate="assets/ai.png">
-              <img src="assets/ai.png" alt="Certificate 5">
-              <div class="certificate-overlay">
-                <button class="view-certificate-btn">View Certificate</button>
+              
+              <div class="certificate-card" data-certificate="assets/Python for Data Science, AI & Development.png">
+                <div class="certificate-preview">
+                  <img src="assets/Python for Data Science, AI & Development.png" alt="Python for Data Science, AI & Development Certificate Preview" loading="lazy">
+                </div>
+                <div class="certificate-info">
+                  <h3>Python for Data Science, AI & Development</h3>
+                </div>
               </div>
-            </div>
-            <div class="certificate-item" data-certificate="assets/web.png">
-              <img src="assets/web.png" alt="Certificate 7">
-              <div class="certificate-overlay">
-                <button class="view-certificate-btn">View Certificate</button>
+              
+              <div class="certificate-card" data-certificate="assets/AI Foundations Prompt Engineering with ChatGPT.png">
+                <div class="certificate-preview">
+                  <img src="assets/AI Foundations Prompt Engineering with ChatGPT.png" alt="AI Foundations: Prompt Engineering with ChatGPT Certificate Preview" loading="lazy">
+                </div>
+                <div class="certificate-info">
+                  <h3>AI Foundations: Prompt Engineering with ChatGPT</h3>
+                </div>
               </div>
-            </div>
-            <div class="certificate-item" data-certificate="assets/advanced.png">
-              <img src="assets/advanced.png" alt="Certificate 8">
-              <div class="certificate-overlay">
-                <button class="view-certificate-btn">View Certificate</button>
+              
+              <div class="certificate-card" data-certificate="assets/Introduction to Generative AI.png">
+                <div class="certificate-preview">
+                  <img src="assets/Introduction to Generative AI.png" alt="Introduction to Generative AI Certificate Preview" loading="lazy">
+                </div>
+                <div class="certificate-info">
+                  <h3>Introduction to Generative AI</h3>
+                </div>
+              </div>
+              
+              <div class="certificate-card" data-certificate="assets/Introduction to Artificial Intelligence.png">
+                <div class="certificate-preview">
+                  <img src="assets/ibm.png" alt="Introduction to Artificial Intelligence Certificate Preview" loading="lazy">
+                </div>
+                <div class="certificate-info">
+                  <h3>Introduction to Artificial Intelligence</h3>
+                </div>
+              </div>
+              
+              <div class="certificate-card" data-certificate="assets/Trustworthy AI Managing Bias, Ethics, and Accountability.png">
+                <div class="certificate-preview">
+                  <img src="assets/Trustworthy AI Managing Bias, Ethics, and Accountability.png" alt="Trustworthy AI: Managing Bias, Ethics, and Accountability Certificate Preview" loading="lazy">
+                </div>
+                <div class="certificate-info">
+                  <h3>Trustworthy AI: Managing Bias, Ethics, and Accountability</h3>
+                </div>
+              </div>
+              
+              <div class="certificate-card" data-certificate="assets/Introduction to Responsible AI.png">
+                <div class="certificate-preview">
+                  <img src="assets/Introduction to Responsible AI.png" alt="Introduction to Responsible AI Certificate Preview" loading="lazy">
+                </div>
+                <div class="certificate-info">
+                  <h3>Introduction to Responsible AI</h3>
+                </div>
+              </div>
+              
+              <!-- Web Development Certificates -->
+              <div class="certificate-card" data-certificate="assets/Advanced Styling with Responsive Design.png">
+                <div class="certificate-preview">
+                  <img src="assets/Advanced Styling with Responsive Design.png" alt="Advanced Styling with Responsive Design Certificate Preview" loading="lazy">
+                </div>
+                <div class="certificate-info">
+                  <h3>Advanced Styling with Responsive Design</h3>
+                </div>
+              </div>
+              
+              <div class="certificate-card" data-certificate="assets/Web Design for Everybody Capstone.png">
+                <div class="certificate-preview">
+                  <img src="assets/Web Design for Everybody Capstone.png" alt="Web Design for Everybody Capstone Certificate Preview" loading="lazy">
+                </div>
+                <div class="certificate-info">
+                  <h3>Web Design for Everybody Capstone</h3>
+                </div>
+              </div>
+              
+              <div class="certificate-card" data-certificate="assets/Introduction to Front-End Development.png">
+                <div class="certificate-preview">
+                  <img src="assets/Introduction to Front-End Development.png" alt="Introduction to Front-End Development Certificate Preview" loading="lazy">
+                </div>
+                <div class="certificate-info">
+                  <h3>Introduction to Front-End Development</h3>
+                </div>
+              </div>
+              
+              <div class="certificate-card" data-certificate="assets/Programming with JavaScript.png">
+                <div class="certificate-preview">
+                  <img src="assets/Programming with JavaScript.png" alt="Programming with JavaScript Certificate Preview" loading="lazy">
+                </div>
+                <div class="certificate-info">
+                  <h3>Programming with JavaScript</h3>
+                </div>
+              </div>
+              
+              <div class="certificate-card" data-certificate="assets/Introduction to HTML5.png">
+                <div class="certificate-preview">
+                  <img src="assets/Introduction to HTML5.png" alt="Introduction to HTML5 Certificate Preview" loading="lazy">
+                </div>
+                <div class="certificate-info">
+                  <h3>Introduction to HTML5</h3>
+                </div>
+              </div>
+              
+              <div class="certificate-card" data-certificate="assets/Introduction to CSS3.png">
+                <div class="certificate-preview">
+                  <img src="assets/Introduction to CSS3.png" alt="Introduction to CSS3 Certificate Preview" loading="lazy">
+                </div>
+                <div class="certificate-info">
+                  <h3>Introduction to CSS3</h3>
+                </div>
+              </div>
+              
+              <div class="certificate-card" data-certificate="assets/Interactivity with JavaScript.png">
+                <div class="certificate-preview">
+                  <img src="assets/Interactivity with JavaScript.png" alt="Interactivity with JavaScript Certificate Preview" loading="lazy">
+                </div>
+                <div class="certificate-info">
+                  <h3>Interactivity with JavaScript</h3>
+                </div>
+              </div>
+              
+              <!-- Other Technical Certificates -->
+              <div class="certificate-card" data-certificate="assets/Introduction to Software Engineering.png">
+                <div class="certificate-preview">
+                  <img src="assets/Introduction to Software Engineering.png" alt="Introduction to Software Engineering Certificate Preview" loading="lazy">
+                </div>
+                <div class="certificate-info">
+                  <h3>Introduction to Software Engineering</h3>
+                </div>
+              </div>
+              
+              <div class="certificate-card" data-certificate="assets/Version Control.png">
+                <div class="certificate-preview">
+                  <img src="assets/Version Control.png" alt="Version Control Certificate Preview" loading="lazy">
+                </div>
+                <div class="certificate-info">
+                  <h3>Version Control</h3>
+                </div>
+              </div>
+              
+              <!-- Additional AI Certificates -->
+              <div class="certificate-card" data-certificate="assets/quiz2.png">
+                <div class="certificate-preview">
+                  <img src="assets/quiz2.png" alt="AI For Everyone Certificate Preview" loading="lazy">
+                </div>
+                <div class="certificate-info">
+                  <h3>AI For Everyone</h3>
+                </div>
+              </div>
+              
+              <div class="certificate-card" data-certificate="assets/khenso.png">
+                <div class="certificate-preview">
+                  <img src="assets/khenso.png" alt="Intoduction to AI & Generative AI Certificate Preview" loading="lazy">
+                </div>
+                <div class="certificate-info">
+                  <h3>Intoduction to AI & Generative AI</h3>
+                </div>
+              </div>
+              
+              <div class="certificate-card" data-certificate="assets/intel.png">
+                <div class="certificate-preview">
+                  <img src="assets/intel.png" alt="AI Fundamentals Certificate Preview" loading="lazy">
+                </div>
+                <div class="certificate-info">
+                  <h3>AI Essentials</h3>
+                </div>
+              </div>
+              
+              <div class="certificate-card" data-certificate="assets/ai.png">
+                <div class="certificate-preview">
+                  <img src="assets/ai.png" alt="AI For Everyone Certificate Preview" loading="lazy">
+                </div>
+                <div class="certificate-info">
+                  <h3>AI For Everyone</h3>
+                </div>
+              </div>
+              
+              <div class="certificate-card" data-certificate="assets/web.png">
+                <div class="certificate-preview">
+                  <img src="assets/web.png" alt="Web Foundation Mastery: Introduction to HTML5 & CSS3 Certificate Preview" loading="lazy">
+                </div>
+                <div class="certificate-info">
+                  <h3>Web Foundation Mastery: Introduction to HTML5 & CSS3</h3>
+                </div>
+              </div>
+              
+              <div class="certificate-card" data-certificate="assets/advanced.png">
+                <div class="certificate-preview">
+                  <img src="assets/advanced.png" alt="UI/UX Design Certificate Preview" loading="lazy">
+                </div>
+                <div class="certificate-info">
+                  <h3>Advanced Styling & Responsive Web Design Mastery</h3>
+                </div>
               </div>
             </div>
           </div>
         </div>
         
         <div class="certification-category">
-          <h3>Professional Certifications</h3>
-          <div class="certifications-gallery">
-            <div class="certificate-item" data-certificate="assets/comm1.png">
-              <img src="assets/comm1.png" alt="Certificate 2">
-              <div class="certificate-overlay">
-                <button class="view-certificate-btn">View Certificate</button>
+          <h3 style="text-align: center; margin-bottom: 30px;">Professional Certificates</h3>
+          <div class="carousel-container">
+            <button class="carousel-nav-arrow prev" onclick="scrollSection('professional-certificates', -1)" aria-label="Previous certificates">
+              <i class="fas fa-chevron-left"></i>
+            </button>
+            <button class="carousel-nav-arrow next" onclick="scrollSection('professional-certificates', 1)" aria-label="Next certificates">
+              <i class="fas fa-chevron-right"></i>
+            </button>
+            <div class="certificates-grid" id="professional-certificates">
+              <!-- Most Important Professional Certificates -->
+              
+            
+              
+              <div class="certificate-card" data-certificate="assets/Preparation for Job Interviews.png">
+                <div class="certificate-preview">
+                  <img src="assets/Preparation for Job Interviews.png" alt="Preparation for Job Interviews Certificate Preview" loading="lazy">
+                </div>
+                <div class="certificate-info">
+                  <h3>Preparation for Job Interviews</h3>
+                </div>
               </div>
-            </div>
-            <div class="certificate-item" data-certificate="assets/time.png">
-              <img src="assets/time.png" alt="Certificate 6">
-              <div class="certificate-overlay">
-                <button class="view-certificate-btn">View Certificate</button>
+              
+              <div class="certificate-card" data-certificate="assets/Introduction to Personal Branding.png">
+                <div class="certificate-preview">
+                  <img src="assets/Introduction to Personal Branding.png" alt="Introduction to Personal Branding Certificate Preview" loading="lazy">
+                </div>
+                <div class="certificate-info">
+                  <h3>Introduction to Personal Branding</h3>
+                </div>
               </div>
-            </div>
-            <div class="certificate-item" data-certificate="assets/comm2.png">
-              <img src="assets/comm2.png" alt="Certificate 7">
-              <div class="certificate-overlay">
-                <button class="view-certificate-btn">View Certificate</button>
+              
+              
+              <div class="certificate-card" data-certificate="assets/Leading with Impact Team Dynamics, Strategy and Ethics.png">
+                <div class="certificate-preview">
+                  <img src="assets/Leading with Impact Team Dynamics, Strategy and Ethics.png" alt="Leading with Impact Team Dynamics, Strategy and Ethics Certificate Preview" loading="lazy">
+                </div>
+                <div class="certificate-info">
+                  <h3>Leading with Impact: Team Dynamics, Strategy and Ethics</h3>
+                </div>
               </div>
-            </div>
-            <div class="certificate-item" data-certificate="assets/reselience.png">
-              <img src="assets/reselience.png" alt="Certificate 6">
-              <div class="certificate-overlay">
-                <button class="view-certificate-btn">View Certificate</button>
+              
+              <div class="certificate-card" data-certificate="assets/Solving Problems with Creative and Critical Thinking.png">
+                <div class="certificate-preview">
+                  <img src="assets/Solving Problems with Creative and Critical Thinking.png" alt="Solving Problems with Creative and Critical Thinking Certificate Preview" loading="lazy">
+                </div>
+                <div class="certificate-info">
+                  <h3>Solving Problems with Creative and Critical Thinking</h3>
+                </div>
               </div>
-            </div>
-            <div class="certificate-item" data-certificate="assets/dev.png">
-              <img src="assets/dev.png" alt="Certificate 7">
-              <div class="certificate-overlay">
-                <button class="view-certificate-btn">View Certificate</button>
+              
+              <!-- Communication Skills -->
+              <div class="certificate-card" data-certificate="assets/comm1.png">
+                <div class="certificate-preview">
+                  <img src="assets/comm1.png" alt="Verbal Communications and Presentation Skills Certificate Preview" loading="lazy">
+                </div>
+                <div class="certificate-info">
+                  <h3>Verbal Communications and Presentation Skills</h3>
+                </div>
               </div>
-            </div>
-            <div class="certificate-item" data-certificate="assets/team.png">
-              <img src="assets/team.png" alt="Certificate 8">
-              <div class="certificate-overlay">
-                <button class="view-certificate-btn">View Certificate</button>
+              
+              <div class="certificate-card" data-certificate="assets/comm2.png">
+                <div class="certificate-preview">
+                  <img src="assets/comm2.png" alt="Active Listening: Enhancing Communication Skills Certificate Preview" loading="lazy">
+                </div>
+                <div class="certificate-info">
+                  <h3>Active Listening: Enhancing Communication Skills</h3>
+                </div>
+              </div>
+              
+              <div class="certificate-card" data-certificate="assets/Write Professional Emails in English.png">
+                <div class="certificate-preview">
+                  <img src="assets/Write Professional Emails in English.png" alt="Write Professional Emails in English Certificate Preview" loading="lazy">
+                </div>
+                <div class="certificate-info">
+                  <h3>Write Professional Emails in English</h3>
+                </div>
+              </div>
+              
+              <div class="certificate-card" data-certificate="assets/Finding Your Professional Voice Confidence & Impact.png">
+                <div class="certificate-preview">
+                  <img src="assets/Finding Your Professional Voice Confidence & Impact.png" alt="Finding Your Professional Voice Confidence & Impact Certificate Preview" loading="lazy">
+                </div>
+                <div class="certificate-info">
+                  <h3>Finding Your Professional Voice: Confidence & Impact</h3>
+                </div>
+              </div>
+              
+              <!-- Teamwork and Collaboration -->
+              <div class="certificate-card" data-certificate="assets/team.png">
+                <div class="certificate-preview">
+                  <img src="assets/team.png" alt="Team Collaboration Certificate Preview" loading="lazy">
+                </div>
+                <div class="certificate-info">
+                  <h3>Team Collaboration</h3>
+                </div>
+              </div>
+              
+              <div class="certificate-card" data-certificate="assets/dev.png">
+                <div class="certificate-preview">
+                  <img src="assets/dev.png" alt="Developing Interpersonal Skills Certificate Preview" loading="lazy">
+                </div>
+                <div class="certificate-info">
+                  <h3>Developing Interpersonal Skills</h3>
+                </div>
+              </div>
+              
+              <div class="certificate-card" data-certificate="assets/Negotiation skills Negotiate and resolve conflict.png">
+                <div class="certificate-preview">
+                  <img src="assets/Negotiation skills Negotiate and resolve conflict.png" alt="Negotiation skills: Negotiate and resolve conflict Certificate Preview" loading="lazy">
+                </div>
+                <div class="certificate-info">
+                  <h3>Negotiation skills: Negotiate and resolve conflict</h3>
+                </div>
+              </div>
+              
+              <div class="certificate-card" data-certificate="assets/Managing Conflicts with Cultural and Emotional Intelligence.png">
+                <div class="certificate-preview">
+                  <img src="assets/Managing Conflicts with Cultural and Emotional Intelligence.png" alt="Managing Conflicts with Cultural and Emotional Intelligence Certificate Preview" loading="lazy">
+                </div>
+                <div class="certificate-info">
+                  <h3>Managing Conflicts with Cultural and Emotional Intelligence</h3>
+                </div>
+              </div>
+              
+              <!-- Personal Development -->
+              <div class="certificate-card" data-certificate="assets/time.png">
+                <div class="certificate-preview">
+                  <img src="assets/time.png" alt="Time Management for Personal & Professional Productivity Certificate Preview" loading="lazy">
+                </div>
+                <div class="certificate-info">
+                  <h3>Time Management for Personal & Professional Productivity</h3>
+                </div>
+              </div>
+
+              <div class="certificate-card" data-certificate="assets/work_readiness_certificate (1).pdf">
+                <div class="certificate-preview">
+                  <embed src="assets/work_readiness_certificate (1).pdf" type="application/pdf" width="100%" height="100%" />
+                </div>
+                <div class="certificate-info">
+                  <h3>Work Readiness Certificate</h3>
+                </div>
+              </div>
+              
+              <div class="certificate-card" data-certificate="assets/Emotional Intelligence.png">
+                <div class="certificate-preview">
+                  <img src="assets/Emotional Intelligence.png" alt="Emotional Intelligence Certificate Preview" loading="lazy">
+                </div>
+                <div class="certificate-info">
+                  <h3>Emotional Intelligence</h3>
+                </div>
+              </div>
+              
+              <div class="certificate-card" data-certificate="assets/Grit and Growth Mindset.png">
+                <div class="certificate-preview">
+                  <img src="assets/Grit and Growth Mindset.png" alt="Grit and Growth Mindset Certificate Preview" loading="lazy">
+                </div>
+                <div class="certificate-info">
+                  <h3>Grit and Growth Mindset</h3>
+                </div>
+              </div>
+              
+              <div class="certificate-card" data-certificate="assets/Positive Psychology Resilience Skills.png">
+                <div class="certificate-preview">
+                  <img src="assets/Positive Psychology Resilience Skills.png" alt="Positive Psychology: Resilience Skills Certificate Preview" loading="lazy">
+                </div>
+                <div class="certificate-info">
+                  <h3>Positive Psychology: Resilience Skills</h3>
+                </div>
+              </div>
+              
+              <div class="certificate-card" data-certificate="assets/Psychology of the Self.png">
+                <div class="certificate-preview">
+                  <img src="assets/Psychology of the Self.png" alt="Psychology of the Self Certificate Preview" loading="lazy">
+                </div>
+                <div class="certificate-info">
+                  <h3>Psychology of the Self</h3>
+                </div>
+              </div>
+              
+              <div class="certificate-card" data-certificate="assets/Financial Planning.png">
+                <div class="certificate-preview">
+                  <img src="assets/Financial Planning.png" alt="Financial Planning Certificate Preview" loading="lazy">
+                </div>
+                <div class="certificate-info">
+                  <h3>Financial Planning</h3>
+                </div>
               </div>
             </div>
           </div>
@@ -1787,14 +2282,13 @@ I thrive in collaborative environments, continuously learning, and adapting to n
         <div class="company">CAPACITI</div>
         <em>July 2025 – Present</em>
         <div class="current-role">Currently specializing in UI/UX design, creating intuitive user interfaces and experiences, web development while continuing to work with AI integration and prototyping projects.</div>
-  <div class="key-achievements">Key Achievements:</div>
+        <div class="key-achievements">Key Achievements:</div>
         <ul class="experience-points">
           <li>Developed and deployed AI-powered tools, websites, and interactive prototypes through hands-on projects, while collaborating with cross-functional teams to solve complex technical challenges and explore ethical AI practices.</li>
         </ul>
       </div>
     </div>
   </section>
-
 
   <!-- Why Work With Me Section -->
   <section id="why-work-with-me">
@@ -1873,13 +2367,13 @@ I thrive in collaborative environments, continuously learning, and adapting to n
             </ul>
 
             <div class="social-links">
-              <a href="https://www.linkedin.com/in/mathebula-nkheso-26b8b6272/" target="_blank">
+              <a href="https://www.linkedin.com/in/mathebula-nkheso-26b8b6272/" target="_blank" aria-label="LinkedIn Profile">
                 <i class="fab fa-linkedin-in"></i>
               </a>
-              <a href="https://github.com/nkheso" target="_blank">
+              <a href="https://github.com/nkheso" target="_blank" aria-label="GitHub Profile">
                 <i class="fab fa-github"></i>
               </a>
-              <a href="mailto:mathebulankheso8@gmail.com">
+              <a href="mailto:mathebulankheso8@gmail.com" aria-label="Send Email">
                 <i class="fas fa-envelope"></i>
               </a>
             </div>
@@ -1926,33 +2420,50 @@ I thrive in collaborative environments, continuously learning, and adapting to n
   <!-- Footer -->
   <footer>
     <div class="container">
-      <div class="socials">
-        <a href="https://www.linkedin.com/in/mathebula-nkheso-26b8b6272/" target="_blank">
-          <i class="fab fa-linkedin-in"></i>
-        </a>
-        <a href="https://github.com/nkheso" target="_blank">
-          <i class="fab fa-github"></i>
-        </a>
-        <a href="mailto:mathebulankheso8@gmail.com">
-          <i class="fas fa-envelope"></i>
-        </a>
+      <div class="footer-content">
+        <div class="footer-socials">
+          <a href="https://www.linkedin.com/in/mathebula-nkheso-26b8b6272/" target="_blank" aria-label="LinkedIn Profile">
+            <i class="fab fa-linkedin-in"></i>
+          </a>
+          <a href="https://github.com/nkheso" target="_blank" aria-label="GitHub Profile">
+            <i class="fab fa-github"></i>
+          </a>
+        </div>
+        
+        <div class="copyright">© 2025 Nkheso Mathebula — All Rights Reserved</div>
       </div>
-      <div>© 2025 Nkheso Mathebula — All Rights Reserved</div>
     </div>
   </footer>
 
   <script>
-    // Navigation and Mobile Menu functionality
+    // Enhanced Navigation and Mobile Menu functionality
     document.addEventListener('DOMContentLoaded', function() {
       const navLinks = document.querySelectorAll('.nav-link');
       const hamburger = document.querySelector('.hamburger');
       const navLinksContainer = document.querySelector('.nav-links');
+      const header = document.querySelector('header');
+
+      // Header scroll effect
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 50) {
+          header.classList.add('scrolled');
+        } else {
+          header.classList.remove('scrolled');
+        }
+      });
 
       // Mobile menu toggle
       hamburger.addEventListener('click', () => {
         navLinksContainer.classList.toggle('show');
         const isExpanded = navLinksContainer.classList.contains('show');
         hamburger.setAttribute('aria-expanded', isExpanded);
+        
+        // Toggle hamburger icon
+        if (isExpanded) {
+          hamburger.innerHTML = '<i class="fas fa-times"></i>';
+        } else {
+          hamburger.innerHTML = '<i class="fas fa-bars"></i>';
+        }
       });
 
       // Close mobile menu when clicking a link
@@ -1960,6 +2471,7 @@ I thrive in collaborative environments, continuously learning, and adapting to n
         link.addEventListener('click', () => {
           navLinksContainer.classList.remove('show');
           hamburger.setAttribute('aria-expanded', 'false');
+          hamburger.innerHTML = '<i class="fas fa-bars"></i>';
         });
       });
 
@@ -1968,26 +2480,20 @@ I thrive in collaborative environments, continuously learning, and adapting to n
         if (!e.target.closest('nav')) {
           navLinksContainer.classList.remove('show');
           hamburger.setAttribute('aria-expanded', 'false');
+          hamburger.innerHTML = '<i class="fas fa-bars"></i>';
         }
       });
       
-      // Update active link on click
-      navLinks.forEach(link => {
-        link.addEventListener('click', (e) => {
-          navLinks.forEach(l => l.classList.remove('active'));
-          link.classList.add('active');
-        });
-      });
-
       // Update active link on scroll
       window.addEventListener('scroll', () => {
         let current = '';
         const sections = document.querySelectorAll('section');
+        const scrollPosition = window.scrollY + 100;
         
         sections.forEach(section => {
           const sectionTop = section.offsetTop;
           const sectionHeight = section.clientHeight;
-          if (pageYOffset >= (sectionTop - sectionHeight / 3)) {
+          if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
             current = section.getAttribute('id');
           }
         });
@@ -2001,7 +2507,7 @@ I thrive in collaborative environments, continuously learning, and adapting to n
       });
     });
 
-      // Project Slider
+    // Enhanced Project Slider
     document.addEventListener('DOMContentLoaded', function() {
       const slider = document.querySelector('.cards-slider');
       const prevBtn = document.querySelector('.prev-arrow');
@@ -2035,7 +2541,18 @@ I thrive in collaborative environments, continuously learning, and adapting to n
       });
     });
 
-    // Project Links Toggle Function
+    // Enhanced Certificate Carousel Functionality
+    function scrollSection(sectionId, direction) {
+      const section = document.getElementById(sectionId);
+      const scrollAmount = 300; // Adjust this value as needed
+      
+      section.scrollBy({
+        left: direction * scrollAmount,
+        behavior: 'smooth'
+      });
+    }
+
+    // Enhanced Project Links Toggle Function
     function toggleProjectLinks(button) {
       const links = button.nextElementSibling;
       if (links.style.display === 'none' || !links.style.display) {
@@ -2055,20 +2572,23 @@ I thrive in collaborative environments, continuously learning, and adapting to n
       }
     }
 
-    // Certificate Modal Functionality
+    // Enhanced Certificate Modal Functionality
     document.addEventListener('DOMContentLoaded', function() {
       const modal = document.querySelector('.certificate-modal');
       const modalImg = modal.querySelector('img');
       const closeBtn = modal.querySelector('.close-modal');
-      const certificateItems = document.querySelectorAll('.certificate-item');
+      const certificateCards = document.querySelectorAll('.certificate-card');
 
       // Open modal when certificate is clicked
-      certificateItems.forEach(item => {
-        item.addEventListener('click', function() {
+      certificateCards.forEach((card) => {
+        card.addEventListener('click', function() {
           const certificateSrc = this.getAttribute('data-certificate');
-          modalImg.src = certificateSrc;
-          modal.classList.add('active');
-          document.body.style.overflow = 'hidden'; // Prevent scrolling
+          // Only open modal for image certificates, not PDFs
+          if (certificateSrc && certificateSrc.endsWith('.png')) {
+            modalImg.src = certificateSrc;
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden'; // Prevent scrolling
+          }
         });
       });
 
@@ -2095,42 +2615,128 @@ I thrive in collaborative environments, continuously learning, and adapting to n
       });
     });
    
-  // Form submission handler
-  document.addEventListener('DOMContentLoaded', function() {
-    const form = document.getElementById('contact-form');
-    const status = document.getElementById('form-status');
-    
-    form.addEventListener("submit", function(e) {
-      e.preventDefault();
-      const formData = new FormData(form);
+    // Enhanced Form submission handler
+    document.addEventListener('DOMContentLoaded', function() {
+      const form = document.getElementById('contact-form');
+      const status = document.getElementById('form-status');
       
-      fetch(form.action, {
-        method: form.method,
-        body: formData,
-        headers: {
-            'Accept': 'application/json'
+      // Real-time form validation
+      const inputs = form.querySelectorAll('input, textarea');
+      inputs.forEach(input => {
+        input.addEventListener('blur', function() {
+          validateField(this);
+        });
+        
+        input.addEventListener('input', function() {
+          clearFieldError(this);
+        });
+      });
+      
+      function validateField(field) {
+        const value = field.value.trim();
+        const fieldName = field.getAttribute('name');
+        
+        if (field.hasAttribute('required') && value === '') {
+          setFieldError(field, 'This field is required');
+          return false;
         }
-      }).then(response => {
-        if (response.ok) {
-          status.textContent = "Message successfully sent! We will get in touch soon.";
-          status.className = "show success";
-          form.reset();
-        } else {
-          response.json().then(data => {
-            if (data.errors) {
-              status.textContent = data.errors.map(error => error.message).join(", ");
-            } else {
-              status.textContent = "Oops! There was a problem submitting your form";
-            }
-            status.className = "show error";
-          });
+        
+        if (fieldName === 'email' && value !== '') {
+          const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+          if (!emailRegex.test(value)) {
+            setFieldError(field, 'Please enter a valid email address');
+            return false;
+          }
         }
-      }).catch(error => {
-        status.textContent = "Oops! There was a problem submitting your form";
-        status.className = "show error";
+        
+        clearFieldError(field);
+        return true;
+      }
+      
+      function setFieldError(field, message) {
+        field.style.borderColor = '#ff0000';
+        
+        // Remove existing error message
+        const existingError = field.parentNode.querySelector('.field-error');
+        if (existingError) {
+          existingError.remove();
+        }
+        
+        // Add error message
+        const errorElement = document.createElement('div');
+        errorElement.className = 'field-error';
+        errorElement.style.color = '#ff0000';
+        errorElement.style.fontSize = '0.85rem';
+        errorElement.style.marginTop = '5px';
+        errorElement.textContent = message;
+        field.parentNode.appendChild(errorElement);
+      }
+      
+      function clearFieldError(field) {
+        field.style.borderColor = '';
+        
+        const existingError = field.parentNode.querySelector('.field-error');
+        if (existingError) {
+          existingError.remove();
+        }
+      }
+      
+      form.addEventListener("submit", function(e) {
+        e.preventDefault();
+        
+        // Validate all fields
+        let isValid = true;
+        inputs.forEach(input => {
+          if (!validateField(input)) {
+            isValid = false;
+          }
+        });
+        
+        if (!isValid) {
+          status.textContent = "Please fix the errors above before submitting.";
+          status.className = "show error";
+          return;
+        }
+        
+        const formData = new FormData(form);
+        
+        // Show loading state
+        const submitButton = form.querySelector('.submit-button');
+        const originalText = submitButton.textContent;
+        submitButton.textContent = 'Sending...';
+        submitButton.disabled = true;
+        
+        fetch(form.action, {
+          method: form.method,
+          body: formData,
+          headers: {
+              'Accept': 'application/json'
+          }
+        }).then(response => {
+          if (response.ok) {
+            status.textContent = "Message successfully sent! We will get in touch soon.";
+            status.className = "show success";
+            form.reset();
+          } else {
+            response.json().then(data => {
+              if (data.errors) {
+                status.textContent = data.errors.map(error => error.message).join(", ");
+              } else {
+                status.textContent = "Oops! There was a problem submitting your form";
+              }
+              status.className = "show error";
+            });
+          }
+        }).catch(error => {
+          status.textContent = "Oops! There was a problem submitting your form";
+          status.className = "show error";
+        }).finally(() => {
+          // Reset button state
+          submitButton.textContent = originalText;
+          submitButton.disabled = false;
+        });
       });
     });
-  });
   </script>
 </body>
 </html>
